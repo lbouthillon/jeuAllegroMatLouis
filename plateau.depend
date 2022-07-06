@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1657108460 source:c:\users\bouthillon\documents\dell\plateau\main.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+
