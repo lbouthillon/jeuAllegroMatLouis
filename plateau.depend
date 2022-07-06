@@ -4,3 +4,26 @@
 	<stdlib.h>
 	<allegro.h>
 
+1657147070 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\main.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"plateau.h"
+	"personnage.h"
+
+1657143487 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.h
+	<allegro.h>
+
+1657143539 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.c
+	<stdio.h>
+	"plateau.h"
+	<allegro.h>
+
+1657147104 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.c
+	<stdio.h>
+	"personnage.h"
+	<allegro.h>
+
+1657147037 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.h
+	<allegro.h>
+
