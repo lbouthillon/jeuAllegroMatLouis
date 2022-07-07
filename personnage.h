@@ -5,6 +5,13 @@
 
 extern int PERSONNAGE_WIDTH;
 extern int PERSONNAGE_HEIGHT;
+
+//extern BITMAP *heros;
+extern BITMAP *bonhommeDos;
+extern BITMAP *bonhommeSud;
+extern BITMAP *bonhommeDroite;
+extern BITMAP *bonhommeGauche;
+
 //extern string[] DIRECTIONS;
 
 typedef struct personnage {
@@ -12,7 +19,7 @@ typedef struct personnage {
     int y;
     int direction;
     int state;
-} PERSONNAGE;
+}PERSONNAGE;
 
 void afficher_personnage(PERSONNAGE perso, BITMAP * page);
 

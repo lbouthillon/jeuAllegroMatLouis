@@ -5,16 +5,48 @@
 
 PERSONNAGE_HEIGHT = 58;
 PERSONNAGE_WIDTH = 40;
-//string[] DIRECTIONS = ["Up";"Down";"Left";"Right"];
 
-void afficher_personnage(PERSONNAGE perso, BITMAP * page)
+BITMAP * init_heros()
 {
-    BITMAP *heros;
+    BITMAP * heros;
     heros = load_bitmap("bonhomme.bmp",NULL);
     if (!heros)
     {
         allegro_message("prb allocation BITMAP heros");
         exit(EXIT_FAILURE);
     }
-    draw_sprite(page,heros,200,200);
+    return heros;
+}
+
+
+//string[] DIRECTIONS = ["Up";"Down";"Left";"Right"];
+//BITMAP * heros = load_bitmap("bonhomme.bmp",NULL);
+//bonhommeDos = load_bitmap("bonhommeDos.bmp",NULL);
+/*    if (!bonhommeDos)
+    {
+        allegro_message("prb allocation BITMAP bonhommeDos");
+        exit(EXIT_FAILURE);
+    }
+    bonhommeSud = load_bitmap("bonhommeSud.bmp",NULL);
+    if (!bonhommeSud)
+    {
+        allegro_message("prb allocation BITMAP bonhommeSud");
+        exit(EXIT_FAILURE);
+    }
+    bonhommeDroite = load_bitmap("bonhommeDroite.bmp",NULL);
+    if (!bonhommeDroite)
+    {
+        allegro_message("prb allocation BITMAP bonhommeDroite");
+        exit(EXIT_FAILURE);
+    }
+    bonhommeGauche = load_bitmap("bonhommeGauche.bmp",NULL);
+    if (!bonhommeGauche)
+    {
+        allegro_message("prb allocation BITMAP bonhommeGauche");
+        exit(EXIT_FAILURE);
+    }*/
+
+void afficher_personnage(PERSONNAGE perso, BITMAP * page)
+{
+    draw_sprite(page,init_heros(),200,200);
 };
