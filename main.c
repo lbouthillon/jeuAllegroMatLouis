@@ -17,6 +17,7 @@ int main()
     int length = NB_CASES_LONG * 64;
     allegro_init();
     install_keyboard();
+    install_sound(DIGI_AUTODETECT,MIDI_AUTODETECT,"A");
 
     set_color_depth(desktop_color_depth());
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,length,width,0,0)!=0)
@@ -45,6 +46,9 @@ int main()
     BITMAP *bonhommeSud;
     BITMAP *bonhommeDroit;
     BITMAP *bonhommeGauche;
+
+    SAMPLE * evertale;
+
     page = create_bitmap(800,600);
 
     page = init_page();
@@ -53,6 +57,7 @@ int main()
     if(!heros){
         allegro_message("error bonhomme");
     }
+
     sol = load_bitmap("SolBlanc.bmp",NULL);
     if (!sol)
     {
@@ -132,7 +137,15 @@ int main()
         exit(EXIT_FAILURE);
     }
 
+<<<<<<< HEAD
 
+=======
+    evertale = load_sample("debutJeu.wav");
+    if(!evertale){
+        allegro_message("error evertale");
+    }
+     afficher_personnage(perso,page);
+>>>>>>> 08da3fd3292f966df8a5f0cee2074c706370a96a
 
     int x =100;
     int y= 100;
@@ -141,6 +154,7 @@ int main()
     // se déplacera de 5 pixels à chaque étape de déplacement
 
     draw_sprite(page,heros,posx,posy);
+    play_sample(evertale,50,0,1000,1);
     // Boucle interactive
     while (!key[KEY_ESC])
     {
