@@ -37,7 +37,7 @@ int main()
 
     // tailles et position initiale au centre
 
-    BITMAP * bonhomme[4][3]; // 0 -> haut , 1 -> bas, 2 -> gauche, 3 -> droite
+    BITMAP * bonhomme[4][3]; // 0 -> bas , 1 -> haut, 2 -> gauche, 3 -> droite
 
     BITMAP * page;
     BITMAP * heros;
@@ -88,13 +88,13 @@ int main()
         allegro_message("prb allocation BITMAP bonhommeSud");
         exit(EXIT_FAILURE);
     }
-    bonhomme[0][1] = load_bitmap("bonhomme.bmp",NULL);
+    bonhomme[0][1] = load_bitmap("bonhomme2.bmp",NULL);
     if (!bonhommeSud)
     {
         allegro_message("prb allocation BITMAP bonhommeSud");
         exit(EXIT_FAILURE);
     }
-    bonhomme[0][2] = load_bitmap("bonhomme.bmp",NULL);
+    bonhomme[0][2] = load_bitmap("bonhomme3.bmp",NULL);
     if (!bonhommeSud)
     {
         allegro_message("prb allocation BITMAP bonhommeSud");
@@ -137,15 +137,12 @@ int main()
         exit(EXIT_FAILURE);
     }
 
-<<<<<<< HEAD
 
-=======
     evertale = load_sample("debutJeu.wav");
     if(!evertale){
         allegro_message("error evertale");
     }
-     afficher_personnage(perso,page);
->>>>>>> 08da3fd3292f966df8a5f0cee2074c706370a96a
+     //afficher_personnage(perso,page);
 
     int x =100;
     int y= 100;
