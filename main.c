@@ -36,10 +36,12 @@ int main()
 
     // tailles et position initiale au centre
 
+    BITMAP * bonhomme[4][3]; // 0 -> haut , 1 -> bas, 2 -> gauche, 3 -> droite
+
     BITMAP * page;
     BITMAP * heros;
     BITMAP * sol;
-    BITMAP *bonhommeDos;
+    BITMAP *bonhommeDos[3];
     BITMAP *bonhommeSud;
     BITMAP *bonhommeDroit;
     BITMAP *bonhommeGauche;
@@ -57,25 +59,73 @@ int main()
         allegro_message("prb allocation BITMAP sol");
         exit(EXIT_FAILURE);
     }
-    bonhommeDos = load_bitmap("bonhommeDos.bmp",NULL);
-    if (!bonhommeDos)
+    bonhomme[1][0] = load_bitmap("bonhommeDos.bmp",NULL);
+    if (!bonhomme[1][0])
     {
         allegro_message("prb allocation BITMAP bonhommeDos");
         exit(EXIT_FAILURE);
     }
-    bonhommeSud = load_bitmap("bonhommeSud.bmp",NULL);
+    bonhomme[1][1] = load_bitmap("bonhommeDos2.bmp",NULL);
+    if (!bonhomme[1][1])
+    {
+        allegro_message("prb allocation BITMAP bonhommeDos");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[1][2] = load_bitmap("bonhommeDos3.bmp",NULL);
+    if (!bonhomme[1][2])
+    {
+        allegro_message("prb allocation BITMAP bonhommeDos");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[0][0] = load_bitmap("bonhomme.bmp",NULL);
     if (!bonhommeSud)
     {
         allegro_message("prb allocation BITMAP bonhommeSud");
         exit(EXIT_FAILURE);
     }
-    bonhommeDroit = load_bitmap("bonhommeDroit.bmp",NULL);
-    if (!bonhommeDroit)
+    bonhomme[0][1] = load_bitmap("bonhomme.bmp",NULL);
+    if (!bonhommeSud)
+    {
+        allegro_message("prb allocation BITMAP bonhommeSud");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[0][2] = load_bitmap("bonhomme.bmp",NULL);
+    if (!bonhommeSud)
+    {
+        allegro_message("prb allocation BITMAP bonhommeSud");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[3][0] = load_bitmap("bonhommeDroit.bmp",NULL);
+    if (!bonhommeSud)
     {
         allegro_message("prb allocation BITMAP bonhommeDroit");
         exit(EXIT_FAILURE);
     }
-    bonhommeGauche = load_bitmap("bonhommeGauche.bmp",NULL);
+    bonhomme[3][1] = load_bitmap("bonhommeDroit2.bmp",NULL);
+    if (!bonhommeSud)
+    {
+        allegro_message("prb allocation BITMAP bonhommeDroit");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[3][2] = load_bitmap("bonhommeDroit3.bmp",NULL);
+    if (!bonhommeSud)
+    {
+        allegro_message("prb allocation BITMAP bonhommeDroit");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[2][0] = load_bitmap("bonhommeGauche.bmp",NULL);
+    if (!bonhommeGauche)
+    {
+        allegro_message("prb allocation BITMAP bonhommeGauche");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[2][1] = load_bitmap("bonhommeGauche2.bmp",NULL);
+    if (!bonhommeGauche)
+    {
+        allegro_message("prb allocation BITMAP bonhommeGauche");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[2][2] = load_bitmap("bonhommeGauche3.bmp",NULL);
     if (!bonhommeGauche)
     {
         allegro_message("prb allocation BITMAP bonhommeGauche");
@@ -83,7 +133,6 @@ int main()
     }
 
 
-     afficher_personnage(perso,page);
 
     int x =100;
     int y= 100;
@@ -95,7 +144,6 @@ int main()
     // Boucle interactive
     while (!key[KEY_ESC])
     {
-
         // 1) EFFACER POSITION ACTUELLE (redessiner à la couleur du fond)
 //
 //        rectfill(screen,posx,posy,posx+tx,posy+ty,makecol(0,0,0));
@@ -103,35 +151,36 @@ int main()
         // 2) DETERMINER NOUVELLE POSITION
 
         // prise en compte du clavier : deplacement direct de la position
-        if (key[KEY_Z])
+        if (key[KEY_W])
         {
             clear_bitmap(page);
             perso.y = perso.y-deplacement; // mouvement négatif en ordonnées
-            draw_sprite(page,bonhommeDos,perso.x,perso.y);
+            perso.state = (perso.state + 1)%30;
+            draw_sprite(page,bonhomme[1][perso.state/10],perso.x,perso.y);
         }
 
         if (key[KEY_S])
         {
             clear_bitmap(page);
             perso.y = perso.y+deplacement; // mouvement positif en ordonnées
-            draw_sprite(page,heros,perso.x,perso.y);
+            perso.state = (perso.state + 1)%30;
+            draw_sprite(page,bonhomme[0][perso.state/10],perso.x,perso.y);
         }
 
-        if (key[KEY_H])
+        if (key[KEY_A])
         {
             clear_bitmap(page);
-            heros = load_bitmap("bonhomme.bmp",NULL);
             perso.x = perso.x-deplacement; // mouvement négatif en abscisses
-            draw_sprite(page,bonhommeGauche,perso.x,perso.y);
+            perso.state = (perso.state + 1)%30;
+            draw_sprite(page,bonhomme[2][perso.state/10],perso.x,perso.y);
         }
 
         if (key[KEY_D])
         {
             clear_bitmap(page);
-            heros = load_bitmap("bonhomme.bmp",NULL);
             perso.x = perso.x+deplacement; // mouvement positif en abscisses
-            draw_sprite(page,bonhommeDroit,perso.x,perso.y);
-
+            perso.state = (perso.state + 1)%30;
+            draw_sprite(page,bonhomme[3][perso.state/10],perso.x,perso.y);
         }
 
         blit(page,screen,0,0,0,0,800,600);

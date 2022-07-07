@@ -21,6 +21,6 @@ typedef struct personnage {
     int state;
 }PERSONNAGE;
 
-void afficher_personnage(PERSONNAGE perso, BITMAP * page);
+void afficher_personnage(PERSONNAGE perso, BITMAP * page, int x, int y);
 
 #endif

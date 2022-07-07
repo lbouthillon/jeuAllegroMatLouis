@@ -46,7 +46,7 @@ BITMAP * init_heros()
         exit(EXIT_FAILURE);
     }*/
 
-void afficher_personnage(PERSONNAGE perso, BITMAP * page)
+void afficher_personnage(PERSONNAGE perso, BITMAP * page,int x,int y)
 {
-    draw_sprite(page,init_heros(),200,200);
+    draw_sprite(page,init_heros(),x,y);
 };

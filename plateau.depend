@@ -4,7 +4,7 @@
 	<stdlib.h>
 	<allegro.h>
 
-1657147070 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\main.c
+1657190903 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -14,17 +14,17 @@
 1657143487 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.h
 	<allegro.h>
 
-1657143539 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.c
+1657187550 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.c
 	<stdio.h>
 	"plateau.h"
 	<allegro.h>
 
-1657147104 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.c
+1657200072 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.c
 	<stdio.h>
 	"personnage.h"
 	<allegro.h>
 
-1657147037 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.h
+1657190489 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.h
 	<allegro.h>
 
 1657186651 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\main.c
