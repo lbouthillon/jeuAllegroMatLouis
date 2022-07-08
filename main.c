@@ -3,8 +3,16 @@
 #include <allegro.h>
 #include "plateau.h"
 #include "personnage.h"
+#include "bitmap.h"
 #define NB_CASES_LONG 10
 #define NB_CASES_LARG 10
+
+PERSONNAGE perso = {0,0,0,0};
+
+void initialisation(){
+    perso.x =300;
+    perso.y =300;
+}
 
 int main()
 {
@@ -12,7 +20,7 @@ int main()
 
 
     // paramètres de l'élément à animer
-    int posx,posy;    // coordonnées
+    int posx = 300,posy = 300;    // coordonnées
     int width = NB_CASES_LARG * 64;
     int length = NB_CASES_LONG * 64;
     allegro_init();
@@ -27,31 +35,35 @@ int main()
         exit(EXIT_FAILURE);
     }
     else{
+
         int deplacement = 5;
 
 
-        PERSONNAGE perso = {0,0,0,0};
+
 
 
     // initialisation des variables de la forme
 
     // tailles et position initiale au centre
 
-    BITMAP * bonhomme[4][3]; // 0 -> bas , 1 -> haut, 2 -> gauche, 3 -> droite
+     // 0 -> bas , 1 -> haut, 2 -> gauche, 3 -> droite
 
     BITMAP * page;
     BITMAP * heros;
     BITMAP * sol;
-    BITMAP *bonhommeDos[3];
+    BITMAP * bonhomme[4][3];
     BITMAP *bonhommeSud;
     BITMAP *bonhommeDroit;
     BITMAP *bonhommeGauche;
+    BITMAP *fondBlanc;
+
 
     SAMPLE * evertale;
+    SAMPLE * marcherSol;
 
     page = create_bitmap(800,600);
 
-    page = init_page();
+    //page = init_page();
 
     heros = load_bitmap("bonhomme.bmp",NULL);
     if(!heros){
@@ -136,21 +148,32 @@ int main()
         allegro_message("prb allocation BITMAP bonhommeGauche");
         exit(EXIT_FAILURE);
     }
-
+    fondBlanc= load_bitmap("fondBlanc.bmp",NULL);
+    if (!fondBlanc)
+    {
+        allegro_message("prb allocation BITMAP fondBlanc");
+        exit(EXIT_FAILURE);
+    }
 
     evertale = load_sample("debutJeu.wav");
     if(!evertale){
         allegro_message("error evertale");
     }
+
+    marcherSol = load_sample("marcherSol.wav");
+    if(!marcherSol){
+        allegro_message("error marcherSol");
+    }
      //afficher_personnage(perso,page);
 
     int x =100;
     int y= 100;
-
+    initialisation();
     // mouvements :
     // se déplacera de 5 pixels à chaque étape de déplacement
-
-    draw_sprite(page,heros,posx,posy);
+    draw_sprite(page,fondBlanc,0,0);
+    draw_sprite(page,heros,perso.x,perso.y);
+    rect(page,120,120,500,500,makecol(0,0,0));
     play_sample(evertale,50,0,1000,1);
     // Boucle interactive
     while (!key[KEY_ESC])
@@ -165,33 +188,57 @@ int main()
         if (key[KEY_W])
         {
             clear_bitmap(page);
-            perso.y = perso.y-deplacement; // mouvement négatif en ordonnées
-            perso.state = (perso.state + 1)%30;
-            draw_sprite(page,bonhomme[1][perso.state/10],perso.x,perso.y);
+            draw_sprite(page,fondBlanc,0,0);
+            draw_sprite(page,heros,perso.x,perso.y);
+            rect(page,120,120,500,500,makecol(0,0,0));
+            //play_sample(marcherSol,50,0,1000,1);
+            if(perso.y>120){
+                perso.y = perso.y-deplacement; // mouvement négatif en ordonnées
+                perso.state = (perso.state + 1)%30;
+                draw_sprite(page,bonhomme[1][perso.state/10],perso.x,perso.y);
+            }
+
         }
 
         if (key[KEY_S])
         {
             clear_bitmap(page);
-            perso.y = perso.y+deplacement; // mouvement positif en ordonnées
-            perso.state = (perso.state + 1)%30;
-            draw_sprite(page,bonhomme[0][perso.state/10],perso.x,perso.y);
+            draw_sprite(page,fondBlanc,0,0);
+            draw_sprite(page,heros,perso.x,perso.y);
+            rect(page,120,120,500,500,makecol(0,0,0));
+            if(perso.y<445){
+                perso.y = perso.y+deplacement; // mouvement positif en ordonnées
+                perso.state = (perso.state + 1)%30;
+                draw_sprite(page,bonhomme[0][perso.state/10],perso.x,perso.y);
+            }
         }
 
         if (key[KEY_A])
         {
             clear_bitmap(page);
-            perso.x = perso.x-deplacement; // mouvement négatif en abscisses
-            perso.state = (perso.state + 1)%30;
-            draw_sprite(page,bonhomme[2][perso.state/10],perso.x,perso.y);
+            draw_sprite(page,fondBlanc,0,0);
+            draw_sprite(page,heros,perso.x,perso.y);
+            rect(page,120,120,500,500,makecol(0,0,0));
+            if(perso.x>120){
+                perso.x = perso.x-deplacement; // mouvement négatif en abscisses
+                perso.state = (perso.state + 1)%30;
+                draw_sprite(page,bonhomme[2][perso.state/10],perso.x,perso.y);
+            }
+
         }
 
         if (key[KEY_D])
         {
             clear_bitmap(page);
-            perso.x = perso.x+deplacement; // mouvement positif en abscisses
-            perso.state = (perso.state + 1)%30;
-            draw_sprite(page,bonhomme[3][perso.state/10],perso.x,perso.y);
+            draw_sprite(page,fondBlanc,0,0);
+            draw_sprite(page,heros,perso.x,perso.y);
+            rect(page,120,120,500,500,makecol(0,0,0));
+            if(perso.x<460){
+                perso.x = perso.x+deplacement; // mouvement positif en abscisses
+                perso.state = (perso.state + 1)%30;
+                draw_sprite(page,bonhomme[3][perso.state/10],perso.x,perso.y);
+            }
+
         }
 
         blit(page,screen,0,0,0,0,800,600);

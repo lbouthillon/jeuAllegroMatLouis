@@ -8,6 +8,7 @@ DEFAULT_TILE_SIZE = 64;
 
 BITMAP * init_page()
 {
+    rectfill(screen,200,100,100,200,makecol(0,255,0));
     BITMAP * page;
     BITMAP * sol;
     int x = 0;
@@ -31,5 +32,6 @@ BITMAP * init_page()
         y = y + 64;
         x = 0;
     }
+    rectfill(screen,200,100,100,200,makecol(0,255,0));
     return page;
 }

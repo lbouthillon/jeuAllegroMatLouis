@@ -27,26 +27,30 @@
 1657190489 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.h
 	<allegro.h>
 
-1657200039 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\main.c
+1657275485 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
 	"plateau.h"
 	"personnage.h"
+	"bitmap.h"
 
 1657149185 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\plateau.h
 	<allegro.h>
 
-1657180514 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\personnage.h
+1657232379 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\personnage.h
 	<allegro.h>
 
-1657153836 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\personnage.c
+1657228072 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\personnage.c
 	<stdio.h>
 	"personnage.h"
 	<allegro.h>
 
-1657149185 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\plateau.c
+1657229731 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\plateau.c
 	<stdio.h>
 	"plateau.h"
+	<allegro.h>
+
+1657232962 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\bitmap.h
 	<allegro.h>
 
