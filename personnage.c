@@ -6,7 +6,7 @@
 PERSONNAGE_HEIGHT = 58;
 PERSONNAGE_WIDTH = 40;
 
-BITMAP * init_heros()
+/*BITMAP * init_heros()
 {
     BITMAP * heros;
     heros = load_bitmap("bonhomme.bmp",NULL);
@@ -16,7 +16,7 @@ BITMAP * init_heros()
         exit(EXIT_FAILURE);
     }
     return heros;
-}
+}*/
 
 
 //string[] DIRECTIONS = ["Up";"Down";"Left";"Right"];
@@ -46,7 +46,7 @@ BITMAP * init_heros()
         exit(EXIT_FAILURE);
     }*/
 
-void afficher_personnage(PERSONNAGE perso, BITMAP * page,int x,int y)
+void afficher_personnage(PERSONNAGE perso, BITMAP * page)
 {
-    draw_sprite(page,init_heros(),x,y);
+    draw_sprite(page,perso.image,perso.x,perso.y);
 };

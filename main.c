@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <allegro.h>
+#include "decor.h"
 #include "plateau.h"
 #include "personnage.h"
 #include "bitmap.h"
@@ -9,9 +10,11 @@
 
 PERSONNAGE perso = {0,0,0,0};
 
-void initialisation(){
-    perso.x =300;
-    perso.y =300;
+
+void initialisation(BITMAP * heros){
+    perso.x = 300;
+    perso.y = 300;
+    perso.image = heros;
 }
 
 int main()
@@ -154,6 +157,14 @@ int main()
         allegro_message("prb allocation BITMAP fondBlanc");
         exit(EXIT_FAILURE);
     }
+    DECOR fondBlancDecor = {fondBlanc,0,0,640,640,1};
+    fondBlancDecor.image = fondBlanc;
+    PLATEAU plateau;
+    plateau.nbDecors = 0;
+    //plateau.decors[0] = fondBlancDecor;
+    plateau = add_decor(plateau, fondBlancDecor);
+    draw_plateau(plateau,page);
+
 
     evertale = load_sample("debutJeu.wav");
     if(!evertale){
@@ -168,11 +179,14 @@ int main()
 
     int x =100;
     int y= 100;
-    initialisation();
+
+    initialisation(heros);
+
     // mouvements :
     // se déplacera de 5 pixels à chaque étape de déplacement
-    draw_sprite(page,fondBlanc,0,0);
-    draw_sprite(page,heros,perso.x,perso.y);
+    //draw_sprite(page,fondBlanc,0,0);
+    afficher_personnage(perso,page);
+    //draw_sprite(page,heros,perso.x,perso.y);
     rect(page,120,120,500,500,makecol(0,0,0));
     play_sample(evertale,50,0,1000,1);
     // Boucle interactive
@@ -188,56 +202,60 @@ int main()
         if (key[KEY_W])
         {
             clear_bitmap(page);
-            draw_sprite(page,fondBlanc,0,0);
-            draw_sprite(page,heros,perso.x,perso.y);
+            draw_plateau(plateau,page);
             rect(page,120,120,500,500,makecol(0,0,0));
             //play_sample(marcherSol,50,0,1000,1);
-            if(perso.y>120){
-                perso.y = perso.y-deplacement; // mouvement négatif en ordonnées
+            if(perso.y>80){
+                perso.y = MAX(perso.y-deplacement,80); // mouvement négatif en ordonnées
                 perso.state = (perso.state + 1)%30;
-                draw_sprite(page,bonhomme[1][perso.state/10],perso.x,perso.y);
             }
+            perso.image = bonhomme[1][perso.state/10];
+            afficher_personnage(perso,page);
+            //draw_sprite(page,bonhomme[1][perso.state/10],perso.x,perso.y);
 
         }
 
         if (key[KEY_S])
         {
             clear_bitmap(page);
-            draw_sprite(page,fondBlanc,0,0);
-            draw_sprite(page,heros,perso.x,perso.y);
+            draw_plateau(plateau,page);
             rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.y<445){
-                perso.y = perso.y+deplacement; // mouvement positif en ordonnées
+            if(perso.y<442){
+                perso.y = MIN(perso.y+deplacement,442); // mouvement positif en ordonnées
                 perso.state = (perso.state + 1)%30;
-                draw_sprite(page,bonhomme[0][perso.state/10],perso.x,perso.y);
             }
+            perso.image = bonhomme[0][perso.state/10];
+            afficher_personnage(perso,page);
+            //draw_sprite(page,bonhomme[0][perso.state/10],perso.x,perso.y);
         }
 
         if (key[KEY_A])
         {
             clear_bitmap(page);
-            draw_sprite(page,fondBlanc,0,0);
-            draw_sprite(page,heros,perso.x,perso.y);
+            draw_plateau(plateau,page);
             rect(page,120,120,500,500,makecol(0,0,0));
             if(perso.x>120){
-                perso.x = perso.x-deplacement; // mouvement négatif en abscisses
+                perso.x = MAX(perso.x-deplacement,120); // mouvement négatif en abscisses
                 perso.state = (perso.state + 1)%30;
-                draw_sprite(page,bonhomme[2][perso.state/10],perso.x,perso.y);
             }
+            perso.image = bonhomme[2][perso.state/10];
+            afficher_personnage(perso,page);
+            //draw_sprite(page,bonhomme[2][perso.state/10],perso.x,perso.y);
 
         }
 
         if (key[KEY_D])
         {
             clear_bitmap(page);
-            draw_sprite(page,fondBlanc,0,0);
-            draw_sprite(page,heros,perso.x,perso.y);
+            draw_plateau(plateau,page);
             rect(page,120,120,500,500,makecol(0,0,0));
             if(perso.x<460){
-                perso.x = perso.x+deplacement; // mouvement positif en abscisses
+                perso.x = MIN(perso.x+deplacement,460); // mouvement positif en abscisses
                 perso.state = (perso.state + 1)%30;
-                draw_sprite(page,bonhomme[3][perso.state/10],perso.x,perso.y);
             }
+            perso.image = bonhomme[3][perso.state/10];
+            afficher_personnage(perso,page);
+            //draw_sprite(page,bonhomme[3][perso.state/10],perso.x,perso.y);
 
         }
 

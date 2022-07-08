@@ -6,7 +6,22 @@ NB_CASES_LARG = 15;
 NB_CASES_LONG = 15;
 DEFAULT_TILE_SIZE = 64;
 
-BITMAP * init_page()
+
+
+void draw_plateau(PLATEAU plateau, BITMAP * page){
+    for (int i = 0 ; i < 1 ; i++){
+        DECOR d = plateau.decors[0];
+        afficher_decor(d,page);
+    }
+};
+
+PLATEAU add_decor(PLATEAU plateau, DECOR decor){
+    plateau.decors[0] = decor;
+    plateau.nbDecors = plateau.nbDecors + 1;
+    return plateau;
+};
+
+/*BITMAP * init_page()
 {
     rectfill(screen,200,100,100,200,makecol(0,255,0));
     BITMAP * page;
@@ -34,4 +49,4 @@ BITMAP * init_page()
     }
     rectfill(screen,200,100,100,200,makecol(0,255,0));
     return page;
-}
+}*/
