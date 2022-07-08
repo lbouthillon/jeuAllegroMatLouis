@@ -4,53 +4,82 @@
 	<stdlib.h>
 	<allegro.h>
 
-1657201987 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\main.c
+1657309338 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
-	"plateau.h"
-	"personnage.h"
-
-1657143487 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.h
-	<allegro.h>
-
-1657187550 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.c
-	<stdio.h>
-	"plateau.h"
-	<allegro.h>
-
-1657200072 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.c
-	<stdio.h>
-	"personnage.h"
-	<allegro.h>
-
-1657190489 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.h
-	<allegro.h>
-
-1657276204 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\main.c
-	<stdio.h>
-	<stdlib.h>
-	<allegro.h>
+	"decor.h"
 	"plateau.h"
 	"personnage.h"
 	"bitmap.h"
 
-1657149185 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\plateau.h
+1657309318 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.h
+	<allegro.h>
+	"decor.h"
+
+1657309351 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.c
+	<stdio.h>
+	"plateau.h"
 	<allegro.h>
 
-1657232379 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\personnage.h
-	<allegro.h>
-
-1657228072 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\personnage.c
+1657278743 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.c
 	<stdio.h>
 	"personnage.h"
 	<allegro.h>
 
-1657229731 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\plateau.c
+1657278685 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.h
+	<allegro.h>
+
+1657319608 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\main.c
+	<stdio.h>
+	<stdlib.h>
+	<allegro.h>
+	"decor.h"
+	"plateau.h"
+	"personnage.h"
+	"bitmap.h"
+
+1657318974 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\plateau.h
+	<allegro.h>
+	"decor.h"
+
+1657318974 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\personnage.h
+	<allegro.h>
+
+1657318974 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\personnage.c
+	<stdio.h>
+	"personnage.h"
+	<allegro.h>
+
+1657318974 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\plateau.c
 	<stdio.h>
 	"plateau.h"
 	<allegro.h>
 
 1657232962 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\bitmap.h
 	<allegro.h>
+
+1657275831 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\bitmap.h
+	<allegro.h>
+
+1657298807 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\decor.h
+	<allegro.h>
+
+1657298805 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\decor.c
+	<stdio.h>
+	"decor.h"
+	<allegro.h>
+
+1657318974 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\decor.h
+	<allegro.h>
+
+1657318974 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\decor.c
+	<stdio.h>
+	"decor.h"
+	<allegro.h>
+
+1657233747 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\bitmap.c
+	<allegro.h>
+	"bitmap.h"
+	<stdio.h>
 

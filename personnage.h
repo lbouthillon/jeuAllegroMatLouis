@@ -15,6 +15,7 @@ extern BITMAP *bonhommeGauche;
 //extern string[] DIRECTIONS;
 
 typedef struct personnage {
+    BITMAP * image;
     int x;
     int y;
     int direction;
@@ -22,6 +23,6 @@ typedef struct personnage {
 }PERSONNAGE;
 
 
-void afficher_personnage(PERSONNAGE perso, BITMAP * page, int x, int y);
+void afficher_personnage(PERSONNAGE perso, BITMAP * page);
 
 #endif
