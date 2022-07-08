@@ -1,10 +1,14 @@
-#include <allegro.h>
-#include "bitmap.h"
 #include <stdio.h>
-    BITMAP * heros;
-    BITMAP * sol;
-    BITMAP * bonhomme[4][3];
-    BITMAP *bonhommeSud;
-    BITMAP *bonhommeDroit;
-    BITMAP *bonhommeGauche;
-    BITMAP *fondBlanc;
+#include "bitmap.h"
+#include <allegro.h>
+
+fondBlanc = load_bitmap("fondBlanc.bmp",NULL);
+if (!fondBlanc)
+{
+    allegro_message("prb allocation BITMAP fondBlanc");
+    exit(EXIT_FAILURE);
+}
+
+BITMAP * getFondBlanc(){
+    return fondBlanc;
+}

@@ -19,9 +19,6 @@ void initialisation(BITMAP * heros){
 
 int main()
 {
-
-
-
     // paramètres de l'élément à animer
     int posx = 300,posy = 300;    // coordonnées
     int width = NB_CASES_LARG * 64;
@@ -55,9 +52,6 @@ int main()
     BITMAP * heros;
     BITMAP * sol;
     BITMAP * bonhomme[4][3];
-    BITMAP *bonhommeSud;
-    BITMAP *bonhommeDroit;
-    BITMAP *bonhommeGauche;
     BITMAP *fondBlanc;
 
 
@@ -151,12 +145,14 @@ int main()
         allegro_message("prb allocation BITMAP bonhommeGauche");
         exit(EXIT_FAILURE);
     }
-    fondBlanc= load_bitmap("fondBlanc.bmp",NULL);
+    fondBlanc = getFondBlanc();
+
+    /*load_bitmap("fondBlanc.bmp",NULL);
     if (!fondBlanc)
     {
         allegro_message("prb allocation BITMAP fondBlanc");
         exit(EXIT_FAILURE);
-    }
+    }*/
     DECOR fondBlancDecor = {fondBlanc,0,0,640,640,1};
     fondBlancDecor.image = fondBlanc;
     PLATEAU plateau;
