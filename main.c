@@ -41,7 +41,6 @@ int main()
 
 
 
-
     // initialisation des variables de la forme
 
     // tailles et position initiale au centre
@@ -60,12 +59,15 @@ int main()
 
     page = create_bitmap(800,600);
 
+
+
     //page = init_page();
 
-    heros = load_bitmap("bonhomme.bmp",NULL);
-    if(!heros){
-        allegro_message("error bonhomme");
-    }
+        heros = load_bitmap("bonhomme.bmp",NULL);
+        if(!heros){
+            allegro_message("error bonhomme");
+        }
+
 
     sol = load_bitmap("SolBlanc.bmp",NULL);
     if (!sol)
@@ -92,55 +94,55 @@ int main()
         exit(EXIT_FAILURE);
     }
     bonhomme[0][0] = load_bitmap("bonhomme.bmp",NULL);
-    if (!bonhommeSud)
+    if (!bonhomme[0][0])
     {
         allegro_message("prb allocation BITMAP bonhommeSud");
         exit(EXIT_FAILURE);
     }
     bonhomme[0][1] = load_bitmap("bonhomme2.bmp",NULL);
-    if (!bonhommeSud)
+    if (!bonhomme[0][1])
     {
         allegro_message("prb allocation BITMAP bonhommeSud");
         exit(EXIT_FAILURE);
     }
     bonhomme[0][2] = load_bitmap("bonhomme3.bmp",NULL);
-    if (!bonhommeSud)
+    if (!bonhomme[0][2])
     {
         allegro_message("prb allocation BITMAP bonhommeSud");
         exit(EXIT_FAILURE);
     }
     bonhomme[3][0] = load_bitmap("bonhommeDroit.bmp",NULL);
-    if (!bonhommeSud)
+    if (!bonhomme[3][0])
     {
         allegro_message("prb allocation BITMAP bonhommeDroit");
         exit(EXIT_FAILURE);
     }
     bonhomme[3][1] = load_bitmap("bonhommeDroit2.bmp",NULL);
-    if (!bonhommeSud)
+    if (!bonhomme[3][1])
     {
         allegro_message("prb allocation BITMAP bonhommeDroit");
         exit(EXIT_FAILURE);
     }
     bonhomme[3][2] = load_bitmap("bonhommeDroit3.bmp",NULL);
-    if (!bonhommeSud)
+    if (!bonhomme[3][2])
     {
         allegro_message("prb allocation BITMAP bonhommeDroit");
         exit(EXIT_FAILURE);
     }
     bonhomme[2][0] = load_bitmap("bonhommeGauche.bmp",NULL);
-    if (!bonhommeGauche)
+    if (!bonhomme[2][0])
     {
         allegro_message("prb allocation BITMAP bonhommeGauche");
         exit(EXIT_FAILURE);
     }
     bonhomme[2][1] = load_bitmap("bonhommeGauche2.bmp",NULL);
-    if (!bonhommeGauche)
+    if (!bonhomme[2][1])
     {
         allegro_message("prb allocation BITMAP bonhommeGauche");
         exit(EXIT_FAILURE);
     }
     bonhomme[2][2] = load_bitmap("bonhommeGauche3.bmp",NULL);
-    if (!bonhommeGauche)
+    if (!bonhomme[2][2])
     {
         allegro_message("prb allocation BITMAP bonhommeGauche");
         exit(EXIT_FAILURE);
@@ -162,16 +164,17 @@ int main()
     draw_plateau(plateau,page);
 
 
-    evertale = load_sample("debutJeu.wav");
-    if(!evertale){
-        allegro_message("error evertale");
-    }
+        evertale = load_sample("debutJeu.wav");
+        if(!evertale){
+            allegro_message("error evertale");
+        }
 
-    marcherSol = load_sample("marcherSol.wav");
-    if(!marcherSol){
-        allegro_message("error marcherSol");
-    }
+        marcherSol = load_sample("marcherSol.wav");
+        if(!marcherSol){
+            allegro_message("error marcherSol");
+        }
      //afficher_personnage(perso,page);
+
 
     int x =100;
     int y= 100;
@@ -208,9 +211,7 @@ int main()
             perso.image = bonhomme[1][perso.state/10];
             afficher_personnage(perso,page);
             //draw_sprite(page,bonhomme[1][perso.state/10],perso.x,perso.y);
-
         }
-
         if (key[KEY_S])
         {
             clear_bitmap(page);
@@ -237,9 +238,7 @@ int main()
             perso.image = bonhomme[2][perso.state/10];
             afficher_personnage(perso,page);
             //draw_sprite(page,bonhomme[2][perso.state/10],perso.x,perso.y);
-
         }
-
         if (key[KEY_D])
         {
             clear_bitmap(page);
@@ -252,15 +251,13 @@ int main()
             perso.image = bonhomme[3][perso.state/10];
             afficher_personnage(perso,page);
             //draw_sprite(page,bonhomme[3][perso.state/10],perso.x,perso.y);
-
         }
 
-        blit(page,screen,0,0,0,0,800,600);
-        rest(20);
+            blit(page,screen,0,0,0,0,800,600);
+            rest(20);
+        }
+        return 0;
 
     }
-
-    return 0;
-}
 }
 END_OF_MAIN();
