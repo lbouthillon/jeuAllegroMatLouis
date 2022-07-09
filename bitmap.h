@@ -3,11 +3,11 @@
 
 #include <allegro.h>
 
-//extern BITMAP * bonhomme[4][3];
+extern BITMAP * bonhomme[4][3];
 extern BITMAP * fondBlanc;
 
-void init_bitmap();
+void init_bitmap(BITMAP * page);
 
-//BITMAP * getFondBlanc();
+
 
 #endif
