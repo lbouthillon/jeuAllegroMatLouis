@@ -15,7 +15,11 @@ typedef struct plateau {
     //void (*dessine_plateau)(decors_list);
 } PLATEAU;
 
+extern PLATEAU * plateauDebut;
+
 void draw_plateau(PLATEAU plateau, BITMAP * page);
+
+void init_plateaux();
 
 PLATEAU add_decor(PLATEAU plateau, DECOR decor);
 

@@ -3,6 +3,8 @@
 
 #include <allegro.h>
 
+
+
 typedef struct decor {
     BITMAP * image;
     int x;
@@ -12,8 +14,13 @@ typedef struct decor {
     int franchissabe;
 } DECOR;
 
+extern DECOR * fondBlancDecor;
+extern DECOR * litDecor;
+
 //int collision(int posx,int posy,DECOR * d);
 
 void afficher_decor(DECOR decor, BITMAP * page);
+
+void init_decors();
 
 #endif

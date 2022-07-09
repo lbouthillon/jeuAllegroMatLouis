@@ -1,11 +1,18 @@
 #include <stdio.h>
+#include "bitmap.h"
 #include "decor.h"
 #include <allegro.h>
 
-/*int collision(int posx, int posy, DECOR * d)
-{
+DECOR * fondBlancDecor = NULL;
+DECOR * litDecor = NULL;
 
-};*/
+void init_decors(){
+    fondBlancDecor = &(DECOR){fondBlanc,0,0,640,640,1};
+    fondBlancDecor->image = fondBlanc;
+
+    litDecor = &(DECOR){lit,400,300,64,95,0};
+    litDecor->image = lit;
+};
 
 void afficher_decor(DECOR decor, BITMAP * page){
     if (!decor.image)

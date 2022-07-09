@@ -50,15 +50,22 @@ int main()
 
         //création des bitmap utilisés dans le jeu
         init_bitmap(page);
+        init_decors();
+        init_plateaux();
         //creation du DECOR fond blanc avec ses coord, sa taille et sa franchissabilité
-        DECOR fondBlancDecor = {fondBlanc,0,0,640,640,1};
+        /*DECOR fondBlancDecor = {fondBlanc,0,0,640,640,1};
         fondBlancDecor.image = fondBlanc;
+
+        DECOR litDecor = {lit,400,300,64,95,0};
+        litDecor.image = lit;*/
         //initialisation du plateau
-        PLATEAU plateau;
-        plateau.nbDecors = 0;
-        plateau.decors[0] = fondBlancDecor;
-        plateau = add_decor(plateau, fondBlancDecor);
-        draw_plateau(plateau,page);
+        //PLATEAU plateau;
+        //plateau.nbDecors = 0;
+        //plateau.decors[0] = *fondBlancDecor;
+        //plateau = add_decor(plateau, *fondBlancDecor);
+        //plateau = add_decor(plateau, *litDecor);
+
+        draw_plateau(*plateauDebut,page);
 
 
         evertale = load_sample("debutJeu.wav");
@@ -91,7 +98,7 @@ int main()
         if (key[KEY_W])
         {
             clear_bitmap(page);
-            draw_plateau(plateau,page);
+            draw_plateau(*plateauDebut,page);
             rect(page,120,120,500,500,makecol(0,0,0));
 
             if(perso.y>80){
@@ -104,7 +111,7 @@ int main()
         if (key[KEY_S])
         {
             clear_bitmap(page);
-            draw_plateau(plateau,page);
+            draw_plateau(*plateauDebut,page);
             rect(page,120,120,500,500,makecol(0,0,0));
             if(perso.y<442){
                 perso.y = MIN(perso.y+deplacement,442); // mouvement positif en ordonnées
@@ -117,7 +124,7 @@ int main()
         if (key[KEY_A])
         {
             clear_bitmap(page);
-            draw_plateau(plateau,page);
+            draw_plateau(*plateauDebut,page);
             rect(page,120,120,500,500,makecol(0,0,0));
             if(perso.x>120){
                 perso.x = MAX(perso.x-deplacement,120); // mouvement négatif en abscisses
@@ -129,7 +136,7 @@ int main()
         if (key[KEY_D])
         {
             clear_bitmap(page);
-            draw_plateau(plateau,page);
+            draw_plateau(*plateauDebut,page);
             rect(page,120,120,500,500,makecol(0,0,0));
             if(perso.x<460){
                 perso.x = MIN(perso.x+deplacement,460); // mouvement positif en abscisses

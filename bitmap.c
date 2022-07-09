@@ -3,9 +3,16 @@
 #include <allegro.h>
 
 BITMAP * fondBlanc = NULL;
+BITMAP * lit = NULL;
 BITMAP * bonhomme[4][3] = {NULL};
 
 void init_bitmap(BITMAP * page){
+    lit = load_bitmap("lit.bmp",NULL);
+    if (!lit)
+    {
+        allegro_message("prb allocation BITMAP lit");
+        exit(EXIT_FAILURE);
+    }
     fondBlanc = load_bitmap("fondBlanc.bmp",NULL);
     if (!fondBlanc)
     {
