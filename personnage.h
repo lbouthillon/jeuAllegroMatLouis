@@ -6,11 +6,6 @@
 extern int PERSONNAGE_WIDTH;
 extern int PERSONNAGE_HEIGHT;
 
-//extern BITMAP *heros;
-extern BITMAP *bonhommeDos;
-extern BITMAP *bonhommeSud;
-extern BITMAP *bonhommeDroite;
-extern BITMAP *bonhommeGauche;
 
 //extern string[] DIRECTIONS;
 

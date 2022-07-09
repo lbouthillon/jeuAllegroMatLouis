@@ -8,14 +8,13 @@
 #define NB_CASES_LONG 10
 #define NB_CASES_LARG 10
 
-
-
+// création du personnage avec ses deux coordonnees, sa direction (entre 0 et 3) et son status (entre 0 et 2)
 PERSONNAGE perso = {0,0,0,0};
 
-
-void initialisation(BITMAP * heros){
-    perso.x = 300;
-    perso.y = 300;
+// initialise le personnage à la position 300, 300 avec l'image du bonhomme de face.
+void initialisation(BITMAP * heros, int x, int y){
+    perso.x = x;
+    perso.y = y;
     perso.image = heros;
 }
 
@@ -23,14 +22,13 @@ int main()
 {
     // paramètres de l'élément à animer
     int posx = 300,posy = 300;    // coordonnées
+    //paramètres du plateau
     int width = NB_CASES_LARG * 64;
     int length = NB_CASES_LONG * 64;
+
     allegro_init();
     install_keyboard();
     install_sound(DIGI_AUTODETECT,MIDI_AUTODETECT,"A");
-
-
-
     set_color_depth(desktop_color_depth());
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,length,width,0,0)!=0)
     {
@@ -38,29 +36,29 @@ int main()
         allegro_exit();
         exit(EXIT_FAILURE);
     }
-    else{
 
+    else{
+        //paramètre de mouvement entre chaque frame
         int deplacement = 5;
 
-    BITMAP * page;
+        BITMAP * page;
+        SAMPLE * evertale;
+        SAMPLE * marcherSol;
+
+        page = create_bitmap(800,600);
 
 
-    SAMPLE * evertale;
-    SAMPLE * marcherSol;
-
-    page = create_bitmap(800,600);
-
-    //page = init_page();
-
-    init_bitmap(page);
-
-    DECOR fondBlancDecor = {fondBlanc,0,0,640,640,1};
-    fondBlancDecor.image = fondBlanc;
-    PLATEAU plateau;
-    plateau.nbDecors = 0;
-    plateau.decors[0] = fondBlancDecor;
-    plateau = add_decor(plateau, fondBlancDecor);
-    draw_plateau(plateau,page);
+        //création des bitmap utilisés dans le jeu
+        init_bitmap(page);
+        //creation du DECOR fond blanc avec ses coord, sa taille et sa franchissabilité
+        DECOR fondBlancDecor = {fondBlanc,0,0,640,640,1};
+        fondBlancDecor.image = fondBlanc;
+        //initialisation du plateau
+        PLATEAU plateau;
+        plateau.nbDecors = 0;
+        plateau.decors[0] = fondBlancDecor;
+        plateau = add_decor(plateau, fondBlancDecor);
+        draw_plateau(plateau,page);
 
 
         evertale = load_sample("debutJeu.wav");
@@ -73,17 +71,13 @@ int main()
             allegro_message("error marcherSol");
         }
 
+        initialisation(bonhomme[0][0],posx,posy);
+        //dessine le perso.image aux coordonnées perso.x et perso.y
+        afficher_personnage(perso,page);
 
-    int x =100;
-    int y= 100;
-
-    initialisation(bonhomme[0][0]);
-
-    // mouvements :
-    // se déplacera de 5 pixels à chaque étape de déplacement
-    afficher_personnage(perso,page);
-    rect(page,120,120,500,500,makecol(0,0,0));
-    play_sample(evertale,50,0,1000,1);
+        rect(page,120,120,500,500,makecol(0,0,0));
+        //play_sample(marcherSol,50,0,1000,1);
+        play_sample(evertale,50,0,1000,1);
     // Boucle interactive
     while (!key[KEY_ESC])
     {
@@ -99,7 +93,7 @@ int main()
             clear_bitmap(page);
             draw_plateau(plateau,page);
             rect(page,120,120,500,500,makecol(0,0,0));
-            //play_sample(marcherSol,50,0,1000,1);
+
             if(perso.y>80){
                 perso.y = MAX(perso.y-deplacement,80); // mouvement négatif en ordonnées
                 perso.state = (perso.state + 1)%30;
