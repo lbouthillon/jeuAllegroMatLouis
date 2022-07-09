@@ -8,6 +8,8 @@
 #define NB_CASES_LONG 10
 #define NB_CASES_LARG 10
 
+
+
 PERSONNAGE perso = {0,0,0,0};
 
 
@@ -26,6 +28,8 @@ int main()
     allegro_init();
     install_keyboard();
     install_sound(DIGI_AUTODETECT,MIDI_AUTODETECT,"A");
+
+    //init_bitmap();
 
     set_color_depth(desktop_color_depth());
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,length,width,0,0)!=0)
@@ -147,14 +151,12 @@ int main()
         allegro_message("prb allocation BITMAP bonhommeGauche");
         exit(EXIT_FAILURE);
     }
-    fondBlanc = getFondBlanc();
-
-    /*load_bitmap("fondBlanc.bmp",NULL);
+    fondBlanc = load_bitmap("fondBlanc.bmp",NULL);
     if (!fondBlanc)
     {
         allegro_message("prb allocation BITMAP fondBlanc");
         exit(EXIT_FAILURE);
-    }*/
+    }
     DECOR fondBlancDecor = {fondBlanc,0,0,640,640,1};
     fondBlancDecor.image = fondBlanc;
     PLATEAU plateau;
