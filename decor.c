@@ -6,12 +6,22 @@
 DECOR * fondBlancDecor = NULL;
 DECOR * litDecor = NULL;
 
-void init_decors(){
-    fondBlancDecor = &(DECOR){fondBlanc,0,0,640,640,1};
-    fondBlancDecor->image = fondBlanc;
+DECOR fondBlancDecorObject ;
+DECOR litDecorObject ;
 
-    litDecor = &(DECOR){lit,400,300,64,95,0};
-    litDecor->image = lit;
+
+
+void init_decors(){
+
+    litDecorObject = (DECOR){lit,200,300,64,95,0};
+    fondBlancDecorObject = (DECOR){fondBlanc,0,0,640,640,1};
+    litDecorObject.image = lit;
+    fondBlancDecorObject.image = fondBlanc;
+    litDecor = &litDecorObject;
+    fondBlancDecor = &fondBlancDecorObject;
+
+
+
 };
 
 void afficher_decor(DECOR decor, BITMAP * page){

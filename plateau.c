@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "plateau.h"
 #include "decor.h"
+#include "bitmap.h"
 #include <allegro.h>
 
 NB_CASES_LARG = 15;
@@ -8,6 +9,7 @@ NB_CASES_LONG = 15;
 DEFAULT_TILE_SIZE = 64;
 
 PLATEAU * plateauDebut = NULL;
+PLATEAU p1;
 
 void draw_plateau(PLATEAU plateau, BITMAP * page){
     for (int i = 0 ; i < plateau.nbDecors ; i++){
@@ -17,7 +19,7 @@ void draw_plateau(PLATEAU plateau, BITMAP * page){
 };
 
 void init_plateaux(){
-    PLATEAU p1 ;
+
     p1.nbDecors = 0;
     p1 = add_decor(p1, *fondBlancDecor);
     p1 = add_decor(p1, *litDecor);
