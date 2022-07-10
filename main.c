@@ -20,6 +20,10 @@ void initialisation(BITMAP * heros, int x, int y){
 
 int main()
 {
+    char phrase[] = "salutation jeune homme";
+
+
+
     // paramètres de l'élément à animer
     int posx = 300,posy = 300;    // coordonnées
     //paramètres du plateau
@@ -85,6 +89,8 @@ int main()
         rect(page,120,120,500,500,makecol(0,0,0));
         //play_sample(marcherSol,50,0,1000,1);
         play_sample(evertale,50,0,1000,1);
+
+        message(phrase,page);
     // Boucle interactive
     while (!key[KEY_ESC])
     {
