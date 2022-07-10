@@ -53,10 +53,11 @@
 	"personnage.h"
 	<allegro.h>
 
-1657405568 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\plateau.c
+1657493241 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\plateau.c
 	<stdio.h>
 	"plateau.h"
 	"decor.h"
+	"bitmap.h"
 	<allegro.h>
 
 1657405568 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\bitmap.h
@@ -77,7 +78,7 @@
 1657405568 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\decor.h
 	<allegro.h>
 
-1657405568 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\decor.c
+1657493241 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\decor.c
 	<stdio.h>
 	"bitmap.h"
 	"decor.h"
