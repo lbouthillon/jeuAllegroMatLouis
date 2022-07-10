@@ -16,6 +16,7 @@ typedef struct decor {
 
 extern DECOR * fondBlancDecor;
 extern DECOR * litDecor;
+extern DECOR * mursDecor;
 
 //int collision(int posx,int posy,DECOR * d);
 
