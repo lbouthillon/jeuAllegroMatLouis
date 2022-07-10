@@ -5,9 +5,11 @@
 
 DECOR * fondBlancDecor = NULL;
 DECOR * litDecor = NULL;
+DECOR * mursDecor = NULL;
 
 DECOR fondBlancDecorObject ;
 DECOR litDecorObject ;
+DECOR mursDecorObject;
 
 
 
@@ -15,10 +17,13 @@ void init_decors(){
 
     litDecorObject = (DECOR){lit,200,300,64,95,0};
     fondBlancDecorObject = (DECOR){fondBlanc,0,0,640,640,1};
+    mursDecorObject = (DECOR){murs,120,120,380,380,1};
     litDecorObject.image = lit;
     fondBlancDecorObject.image = fondBlanc;
+    mursDecorObject.image = murs;
     litDecor = &litDecorObject;
     fondBlancDecor = &fondBlancDecorObject;
+    mursDecor = &mursDecorObject;
 
 
 

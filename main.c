@@ -86,7 +86,7 @@ int main()
         //dessine le perso.image aux coordonnées perso.x et perso.y
         afficher_personnage(perso,page);
 
-        rect(page,120,120,500,500,makecol(0,0,0));
+        //rect(page,120,120,500,500,makecol(0,0,0));
         //play_sample(marcherSol,50,0,1000,1);
         play_sample(evertale,50,0,1000,1);
 
@@ -105,10 +105,10 @@ int main()
         {
             clear_bitmap(page);
             draw_plateau(*plateauDebut,page);
-            rect(page,120,120,500,500,makecol(0,0,0));
+            //rect(page,120,120,500,500,makecol(0,0,0));
 
-            if(perso.y>80){
-                perso.y = MAX(perso.y-deplacement,80); // mouvement négatif en ordonnées
+            if(perso.y>82){
+                perso.y = MAX(perso.y-deplacement,82); // mouvement négatif en ordonnées
                 perso.state = (perso.state + 1)%30;
             }
             perso.image = bonhomme[1][perso.state/10];
@@ -118,9 +118,9 @@ int main()
         {
             clear_bitmap(page);
             draw_plateau(*plateauDebut,page);
-            rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.y<442){
-                perso.y = MIN(perso.y+deplacement,442); // mouvement positif en ordonnées
+            //rect(page,120,120,500,500,makecol(0,0,0));
+            if(perso.y<440){
+                perso.y = MIN(perso.y+deplacement,440); // mouvement positif en ordonnées
                 perso.state = (perso.state + 1)%30;
             }
             perso.image = bonhomme[0][perso.state/10];
@@ -131,9 +131,9 @@ int main()
         {
             clear_bitmap(page);
             draw_plateau(*plateauDebut,page);
-            rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.x>120){
-                perso.x = MAX(perso.x-deplacement,120); // mouvement négatif en abscisses
+            //rect(page,120,120,500,500,makecol(0,0,0));
+            if(perso.x>122){
+                perso.x = MAX(perso.x-deplacement,122); // mouvement négatif en abscisses
                 perso.state = (perso.state + 1)%30;
             }
             perso.image = bonhomme[2][perso.state/10];
@@ -143,9 +143,9 @@ int main()
         {
             clear_bitmap(page);
             draw_plateau(*plateauDebut,page);
-            rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.x<460){
-                perso.x = MIN(perso.x+deplacement,460); // mouvement positif en abscisses
+            //rect(page,120,120,500,500,makecol(0,0,0));
+            if(perso.x<458){
+                perso.x = MIN(perso.x+deplacement,458); // mouvement positif en abscisses
                 perso.state = (perso.state + 1)%30;
             }
             perso.image = bonhomme[3][perso.state/10];

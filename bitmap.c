@@ -4,9 +4,16 @@
 
 BITMAP * fondBlanc = NULL;
 BITMAP * lit = NULL;
+BITMAP * murs = NULL;
 BITMAP * bonhomme[4][3] = {NULL};
 
 void init_bitmap(BITMAP * page){
+    murs = load_bitmap("murs.bmp", NULL);
+    if (!murs)
+    {
+        allegro_message("prb allocation BITMAP murs");
+        exit(EXIT_FAILURE);
+    }
     lit = load_bitmap("lit.bmp",NULL);
     if (!lit)
     {
