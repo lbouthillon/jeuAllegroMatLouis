@@ -21,6 +21,7 @@ void initialisation(BITMAP * heros, int x, int y){
 int main()
 {
     char phrase[] = "salutation jeune homme";
+    char lit[] = "Voici votre lit";
 
 
 
@@ -32,6 +33,7 @@ int main()
 
     allegro_init();
     install_keyboard();
+    install_mouse();
     install_sound(DIGI_AUTODETECT,MIDI_AUTODETECT,"A");
     set_color_depth(desktop_color_depth());
     if (set_gfx_mode(GFX_AUTODETECT_WINDOWED,length,width,0,0)!=0)
@@ -42,6 +44,8 @@ int main()
     }
 
     else{
+        show_mouse(screen);
+
         //paramètre de mouvement entre chaque frame
         int deplacement = 5;
 
@@ -90,10 +94,13 @@ int main()
         //play_sample(marcherSol,50,0,1000,1);
         play_sample(evertale,50,0,1000,1);
 
+        blit(page,screen,0,0,0,0,800,600);
         message(phrase,page);
     // Boucle interactive
+    int timer = 30;
     while (!key[KEY_ESC])
     {
+
         // 1) EFFACER POSITION ACTUELLE (redessiner à la couleur du fond)
 //
 //        rectfill(screen,posx,posy,posx+tx,posy+ty,makecol(0,0,0));
@@ -151,9 +158,18 @@ int main()
             perso.image = bonhomme[3][perso.state/10];
             afficher_personnage(perso,page);
         }
-
+        if (mouse_b & 2){
+            if((mouse_x >= 200 && mouse_x <= 265) &&(mouse_y >= 300 && mouse_y <= 395)){
+                message(lit,page);
+                timer = 50;
+            }
+        }
+        if (mouse_b & 1 || timer == 0){
+            messageSupr();
+        }
             blit(page,screen,0,0,0,0,800,600);
             rest(20);
+            timer --;
         }
         return 0;
 
