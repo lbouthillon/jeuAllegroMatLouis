@@ -89,7 +89,8 @@ int main()
         //rect(page,120,120,500,500,makecol(0,0,0));
         //play_sample(marcherSol,50,0,1000,1);
         play_sample(evertale,50,0,1000,1);
-
+        //allegro_message("avant texte");
+        blit(page,screen,0,0,0,0,800,600);
         message(phrase,page);
     // Boucle interactive
     while (!key[KEY_ESC])
@@ -108,8 +109,11 @@ int main()
             //rect(page,120,120,500,500,makecol(0,0,0));
 
             if(perso.y>82){
-                perso.y = MAX(perso.y-deplacement,82); // mouvement négatif en ordonnées
+
+                perso.direction = 1;
+                perso.y = MAX(perso.y-collision(perso, litDecor,deplacement),82); // mouvement négatif en ordonnées
                 perso.state = (perso.state + 1)%30;
+
             }
             perso.image = bonhomme[1][perso.state/10];
             afficher_personnage(perso,page);
@@ -120,8 +124,10 @@ int main()
             draw_plateau(*plateauDebut,page);
             //rect(page,120,120,500,500,makecol(0,0,0));
             if(perso.y<440){
-                perso.y = MIN(perso.y+deplacement,440); // mouvement positif en ordonnées
+                perso.direction = 0;
+                perso.y = MIN(perso.y+collision(perso, litDecor,deplacement),440); // mouvement positif en ordonnées
                 perso.state = (perso.state + 1)%30;
+
             }
             perso.image = bonhomme[0][perso.state/10];
             afficher_personnage(perso,page);
@@ -133,7 +139,8 @@ int main()
             draw_plateau(*plateauDebut,page);
             //rect(page,120,120,500,500,makecol(0,0,0));
             if(perso.x>122){
-                perso.x = MAX(perso.x-deplacement,122); // mouvement négatif en abscisses
+                perso.direction = 2;
+                perso.x = MAX(perso.x-collision(perso, litDecor,deplacement),122); // mouvement négatif en abscisses
                 perso.state = (perso.state + 1)%30;
             }
             perso.image = bonhomme[2][perso.state/10];
@@ -145,7 +152,8 @@ int main()
             draw_plateau(*plateauDebut,page);
             //rect(page,120,120,500,500,makecol(0,0,0));
             if(perso.x<458){
-                perso.x = MIN(perso.x+deplacement,458); // mouvement positif en abscisses
+                perso.direction = 3;
+                perso.x = MIN(perso.x+collision(perso, litDecor,deplacement),458); // mouvement positif en abscisses
                 perso.state = (perso.state + 1)%30;
             }
             perso.image = bonhomme[3][perso.state/10];

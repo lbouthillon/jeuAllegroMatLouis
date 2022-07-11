@@ -2,6 +2,7 @@
 #define _DECOR_H
 
 #include <allegro.h>
+#include "personnage.h"
 
 
 
@@ -18,7 +19,7 @@ extern DECOR * fondBlancDecor;
 extern DECOR * litDecor;
 extern DECOR * mursDecor;
 
-//int collision(int posx,int posy,DECOR * d);
+int collision(PERSONNAGE perso,DECOR * d, int deplacement);
 
 void afficher_decor(DECOR decor, BITMAP * page);
 
