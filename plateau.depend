@@ -13,11 +13,11 @@
 	"personnage.h"
 	"bitmap.h"
 
-1657637474 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.h
+1657669541 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.h
 	<allegro.h>
 	"decor.h"
 
-1657637469 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.c
+1657669801 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.c
 	<stdio.h>
 	"plateau.h"
 	"decor.h"
@@ -70,7 +70,7 @@
 	<allegro.h>
 	"personnage.h"
 
-1657647970 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\decor.c
+1657668653 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\decor.c
 	<stdio.h>
 	"bitmap.h"
 	"decor.h"

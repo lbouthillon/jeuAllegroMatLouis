@@ -35,7 +35,6 @@ int collision(PERSONNAGE perso, DECOR * d, int deplacement, int Xref, int Yref){
 }
 
 
-
 void init_decors(){
 
     litDecorObject = (DECOR){lit,220,300,92,60,0};

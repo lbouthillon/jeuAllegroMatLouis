@@ -112,17 +112,15 @@ int main()
         {
             clear_bitmap(page);
             draw_plateau(*plateauDebut,page);
-            //rect(page,120,120,500,500,makecol(0,0,0));
 
-            if(plateauDebut->y < 1000){
 
-                perso.direction = 1;
-                plateauDebut->y = MIN(plateauDebut->y+collision(perso, litDecor,deplacement,plateauDebut->x,plateauDebut->y),180);
-                //plateauDebut = deplacer_plateau(*plateauDebut,0,collision(perso, litDecor,deplacement,plateauDebut->x,plateauDebut->y));
-                //perso.y = MAX(perso.y-collision(perso, litDecor,deplacement),82); // mouvement négatif en ordonnées
-                perso.state = (perso.state + 1)%30;
 
-            }
+
+            perso.direction = 1;
+            plateauDebut->y = MIN(plateauDebut->y + collision_plateau(*plateauDebut, perso, deplacement),plateauDebut->yMax);
+            perso.state = (perso.state + 1)%30;
+
+
             perso.image = bonhomme[1][perso.state/10];
             afficher_personnage(perso,page);
         }
@@ -130,14 +128,13 @@ int main()
         {
             clear_bitmap(page);
             draw_plateau(*plateauDebut,page);
-            //rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.y<400){
-                perso.direction = 0;
-                plateauDebut->y = MAX(plateauDebut->y-collision(perso, litDecor,deplacement,plateauDebut->x,plateauDebut->y),-100);
-                //perso.y = MIN(perso.y+collision(perso, litDecor,deplacement),440); // mouvement positif en ordonnées
-                perso.state = (perso.state + 1)%30;
 
-            }
+
+            perso.direction = 0;
+            plateauDebut->y = MAX(plateauDebut->y-collision_plateau(*plateauDebut, perso, deplacement),plateauDebut->yMin);
+            perso.state = (perso.state + 1)%30;
+
+
             perso.image = bonhomme[0][perso.state/10];
             afficher_personnage(perso,page);
         }
@@ -146,13 +143,12 @@ int main()
         {
             clear_bitmap(page);
             draw_plateau(*plateauDebut,page);
-            //rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.x>162){
-                perso.direction = 2;
-                plateauDebut->x = MIN(plateauDebut->x+collision(perso, litDecor,deplacement,plateauDebut->x,plateauDebut->y),137);
-                //perso.x = MAX(perso.x-collision(perso, litDecor,deplacement),122); // mouvement négatif en abscisses
-                perso.state = (perso.state + 1)%30;
-            }
+
+
+            perso.direction = 2;
+            plateauDebut->x = MIN(plateauDebut->x+collision_plateau(*plateauDebut, perso, deplacement),plateauDebut->xMax);
+            perso.state = (perso.state + 1)%30;
+
             perso.image = bonhomme[2][perso.state/10];
             afficher_personnage(perso,page);
         }
@@ -160,13 +156,12 @@ int main()
         {
             clear_bitmap(page);
             draw_plateau(*plateauDebut,page);
-            //rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.x<418){
-                perso.direction = 3;
-                plateauDebut->x = MAX(plateauDebut->x - collision(perso, litDecor,deplacement,plateauDebut->x,plateauDebut->y),-117);
-                //perso.x = MIN(perso.x+collision(perso, litDecor,deplacement),458); // mouvement positif en abscisses
-                perso.state = (perso.state + 1)%30;
-            }
+
+
+            perso.direction = 3;
+            plateauDebut->x = MAX(plateauDebut->x - collision_plateau(*plateauDebut, perso, deplacement),plateauDebut->xMin);
+            perso.state = (perso.state + 1)%30;
+
             perso.image = bonhomme[3][perso.state/10];
             afficher_personnage(perso,page);
         }
