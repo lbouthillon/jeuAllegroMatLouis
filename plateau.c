@@ -14,13 +14,25 @@ PLATEAU p1;
 void draw_plateau(PLATEAU plateau, BITMAP * page){
     for (int i = 0 ; i < plateau.nbDecors ; i++){
         DECOR d = plateau.decors[i];
-        afficher_decor(d,page);
+        afficher_decor(d,page,plateau.x,plateau.y);
     }
 };
+
+/*PLATEAU * deplacer_plateau(PLATEAU plateau, int deplacement_x, int deplacement_y){
+    plateau.x = plateau.x + deplacement_x;
+    plateau.y = plateau.y + deplacement_y;
+    for (int i = 0 ; i < plateau.nbDecors ; i++){
+        plateau.decors[i].x = plateau.decors[i].x + deplacement_x;
+        plateau.decors[i].y = plateau.decors[i].y + deplacement_y;
+    }
+    return &plateau;
+}*/
 
 void init_plateaux(){
 
     p1.nbDecors = 0;
+    p1.x = 0;
+    p1.y = 0;
     p1 = add_decor(p1, *fondBlancDecor);
     p1 = add_decor(p1, *murs2Decor);
     p1 = add_decor(p1, *litDecor);

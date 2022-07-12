@@ -10,6 +10,8 @@ extern int NB_CASES_LONG;
 extern int DEFAULT_TILE_SIZE;
 
 typedef struct plateau {
+    int x;
+    int y;
     int nbDecors;
     DECOR decors[200];
     //void (*dessine_plateau)(decors_list);
@@ -18,6 +20,8 @@ typedef struct plateau {
 extern PLATEAU * plateauDebut;
 
 void draw_plateau(PLATEAU plateau, BITMAP * page);
+
+//PLATEAU * deplacer_plateau(PLATEAU plateau, int deplacement_x, int deplacement_y);
 
 void init_plateaux();
 

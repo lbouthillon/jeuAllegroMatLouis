@@ -6,6 +6,7 @@
 
 
 
+
 typedef struct decor {
     BITMAP * image;
     int x;
@@ -22,9 +23,9 @@ extern DECOR * porteSangDecor;
 extern DECOR * goutteSangDecor;
 extern DECOR * murs2Decor;
 
-int collision(PERSONNAGE perso,DECOR * d, int deplacement);
+int collision(PERSONNAGE perso,DECOR * d, int deplacement, int Xref, int Yref);
 
-void afficher_decor(DECOR decor, BITMAP * page);
+void afficher_decor(DECOR decor, BITMAP * page, int Xref, int Yref);
 
 void init_decors();
 

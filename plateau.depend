@@ -4,7 +4,7 @@
 	<stdlib.h>
 	<allegro.h>
 
-1657616838 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\main.c
+1657637444 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -13,11 +13,11 @@
 	"personnage.h"
 	"bitmap.h"
 
-1657401676 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.h
+1657637474 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.h
 	<allegro.h>
 	"decor.h"
 
-1657586465 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.c
+1657637469 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\plateau.c
 	<stdio.h>
 	"plateau.h"
 	"decor.h"
@@ -66,11 +66,11 @@
 1657586191 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\bitmap.h
 	<allegro.h>
 
-1657586246 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\decor.h
+1657630582 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\decor.h
 	<allegro.h>
 	"personnage.h"
 
-1657586745 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\decor.c
+1657647970 source:c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\decor.c
 	<stdio.h>
 	"bitmap.h"
 	"decor.h"
