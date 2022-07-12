@@ -32,7 +32,7 @@
 1657383580 c:\users\louis\documents\doc\loisirs\allegro c\jeuallegromatlouis\personnage.h
 	<allegro.h>
 
-1657497659 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\main.c
+1657498881 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\main.c
 	<stdio.h>
 	<stdlib.h>
 	<allegro.h>
@@ -77,13 +77,15 @@
 	"personnage.h"
 	<allegro.h>
 
-1657493971 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\decor.h
+1657498881 c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\decor.h
 	<allegro.h>
+	"personnage.h"
 
-1657493971 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\decor.c
+1657498881 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\decor.c
 	<stdio.h>
 	"bitmap.h"
 	"decor.h"
+	"personnage.h"
 	<allegro.h>
 
 1657493971 source:c:\users\bouthillon\documents\projetmatlouis\jeuallegromatlouis\bitmap.c
