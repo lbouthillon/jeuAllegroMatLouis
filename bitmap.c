@@ -5,6 +5,9 @@
 BITMAP * fondBlanc = NULL;
 BITMAP * lit = NULL;
 BITMAP * murs = NULL;
+BITMAP * porteSang = NULL;
+BITMAP * goutteSang = NULL;
+BITMAP * murs2 = NULL;
 BITMAP * bonhomme[4][3] = {NULL};
 
 void init_bitmap(BITMAP * page){
@@ -12,6 +15,24 @@ void init_bitmap(BITMAP * page){
     if (!murs)
     {
         allegro_message("prb allocation BITMAP murs");
+        exit(EXIT_FAILURE);
+    }
+    murs2 = load_bitmap("murs2.bmp", NULL);
+    if (!murs2)
+    {
+        allegro_message("prb allocation BITMAP murs2");
+        exit(EXIT_FAILURE);
+    }
+    porteSang = load_bitmap("porteSang.bmp", NULL);
+    if (!porteSang)
+    {
+        allegro_message("prb allocation BITMAP porteSang");
+        exit(EXIT_FAILURE);
+    }
+    goutteSang = load_bitmap("goutteSang.bmp", NULL);
+    if (!goutteSang)
+    {
+        allegro_message("prb allocation BITMAP goutteSang");
         exit(EXIT_FAILURE);
     }
     lit = load_bitmap("lit.bmp",NULL);

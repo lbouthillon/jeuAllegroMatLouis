@@ -22,8 +22,10 @@ void init_plateaux(){
 
     p1.nbDecors = 0;
     p1 = add_decor(p1, *fondBlancDecor);
-    p1 = add_decor(p1, *mursDecor);
+    p1 = add_decor(p1, *murs2Decor);
     p1 = add_decor(p1, *litDecor);
+    p1 = add_decor(p1, *porteSangDecor);
+    p1 = add_decor(p1, *goutteSangDecor);
     plateauDebut = &p1;
 };
 
