@@ -11,6 +11,7 @@
 // création du personnage avec ses deux coordonnees, sa direction (entre 0 et 3) et son status (entre 0 et 2)
 PERSONNAGE perso = {0,0,0,0};
 
+
 // initialise le personnage à la position 300, 300 avec l'image du bonhomme de face.
 void initialisation(BITMAP * heros, int x, int y){
     perso.x = x;
@@ -20,9 +21,9 @@ void initialisation(BITMAP * heros, int x, int y){
 
 int main()
 {
+
     char phrase[] = "salutation jeune homme";
     char lit[] = "Voici votre lit";
-
 
 
     // paramètres de l'élément à animer
@@ -60,6 +61,7 @@ int main()
         init_bitmap(page);
         init_decors();
         init_plateaux();
+        PLATEAU plateauCourant = *plateauDebut;
         //creation du DECOR fond blanc avec ses coord, sa taille et sa franchissabilité
         /*DECOR fondBlancDecor = {fondBlanc,0,0,640,640,1};
         fondBlancDecor.image = fondBlanc;
@@ -73,7 +75,7 @@ int main()
         //plateau = add_decor(plateau, *fondBlancDecor);
         //plateau = add_decor(plateau, *litDecor);
 
-        draw_plateau(*plateauDebut,page);
+        draw_plateau(plateauCourant,page);
 
 
         evertale = load_sample("debutJeu.wav");
@@ -111,13 +113,13 @@ int main()
         if (key[KEY_W])
         {
             clear_bitmap(page);
-            draw_plateau(*plateauDebut,page);
+            draw_plateau(plateauCourant,page);
 
 
 
 
             perso.direction = 1;
-            plateauDebut->y = MIN(plateauDebut->y + collision_plateau(*plateauDebut, perso, deplacement),plateauDebut->yMax);
+            plateauCourant.y = MIN(plateauCourant.y + collision_plateau(plateauCourant, perso, deplacement),plateauCourant.yMax);
             perso.state = (perso.state + 1)%30;
 
 
@@ -127,11 +129,11 @@ int main()
         if (key[KEY_S])
         {
             clear_bitmap(page);
-            draw_plateau(*plateauDebut,page);
+            draw_plateau(plateauCourant,page);
 
 
             perso.direction = 0;
-            plateauDebut->y = MAX(plateauDebut->y-collision_plateau(*plateauDebut, perso, deplacement),plateauDebut->yMin);
+            plateauCourant.y = MAX(plateauCourant.y-collision_plateau(plateauCourant, perso, deplacement),plateauCourant.yMin);
             perso.state = (perso.state + 1)%30;
 
 
@@ -142,11 +144,11 @@ int main()
         if (key[KEY_A])
         {
             clear_bitmap(page);
-            draw_plateau(*plateauDebut,page);
+            draw_plateau(plateauCourant,page);
 
 
             perso.direction = 2;
-            plateauDebut->x = MIN(plateauDebut->x+collision_plateau(*plateauDebut, perso, deplacement),plateauDebut->xMax);
+            plateauCourant.x = MIN(plateauCourant.x+collision_plateau(plateauCourant, perso, deplacement),plateauCourant.xMax);
             perso.state = (perso.state + 1)%30;
 
             perso.image = bonhomme[2][perso.state/10];
@@ -155,11 +157,11 @@ int main()
         if (key[KEY_D])
         {
             clear_bitmap(page);
-            draw_plateau(*plateauDebut,page);
+            draw_plateau(plateauCourant,page);
 
 
             perso.direction = 3;
-            plateauDebut->x = MAX(plateauDebut->x - collision_plateau(*plateauDebut, perso, deplacement),plateauDebut->xMin);
+            plateauCourant.x = MAX(plateauCourant.x - collision_plateau(plateauCourant, perso, deplacement),plateauCourant.xMin);
             perso.state = (perso.state + 1)%30;
 
             perso.image = bonhomme[3][perso.state/10];
