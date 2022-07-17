@@ -181,6 +181,15 @@ int main()
         if (mouse_b & 1 || timer == 0){
             messageSupr();
         }
+        if (key[KEY_E]){
+            draw_sprite(page,menu,460,0);
+            if (key[KEY_H]){
+                    printf("hola");
+                if((mouse_x >= 0 && mouse_x <= 640) &&(mouse_y >= 0 && mouse_y <= 640)){
+                    draw_sprite(page,sac,0,0);
+                }
+            }
+        }
         blit(page,screen,0,0,0,0,800,600);
         rest(20);
         timer --;
