@@ -8,8 +8,10 @@ NB_CASES_LARG = 15;
 NB_CASES_LONG = 15;
 DEFAULT_TILE_SIZE = 64;
 
-PLATEAU * plateauDebut = NULL;
+PLATEAU * chambre = NULL;
 PLATEAU p1;
+PLATEAU * RDC = NULL;
+PLATEAU p2;
 
 void draw_plateau(PLATEAU plateau, BITMAP * page){
     for (int i = 0 ; i < plateau.nbDecors ; i++){
@@ -51,7 +53,18 @@ void init_plateaux(){
     p1 = add_decor(p1, *litDecor);
     p1 = add_decor(p1, *porteSangDecor);
     p1 = add_decor(p1, *goutteSangDecor);
-    plateauDebut = &p1;
+    chambre = &p1;
+
+    p2.nbDecors = 0;
+    p2.x = 0;
+    p2.y = 0;
+    p2.xMin =  - 117;
+    p2.xMax = 137;
+    p2.yMin = -100;
+    p2.yMax = 180;
+    p2 = add_decor(p1, *fondBlancDecor);
+    p2 = add_decor(p1, *murs2Decor);
+    p2 = add_decor(p1, *porteSangDecor);
 };
 
 PLATEAU add_decor(PLATEAU plateau, DECOR decor){

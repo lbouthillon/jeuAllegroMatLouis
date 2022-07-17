@@ -61,7 +61,7 @@ int main()
         init_bitmap(page);
         init_decors();
         init_plateaux();
-        PLATEAU plateauCourant = *plateauDebut;
+        PLATEAU plateauCourant = *chambre;
         //creation du DECOR fond blanc avec ses coord, sa taille et sa franchissabilité
         /*DECOR fondBlancDecor = {fondBlanc,0,0,640,640,1};
         fondBlancDecor.image = fondBlanc;
@@ -112,13 +112,18 @@ int main()
         // prise en compte du clavier : deplacement direct de la position
         if (key[KEY_W])
         {
+            perso.direction = 1;
+            if (35 + plateauCourant.y + 144 == 300 && plateauCourant.x + 200 + 7 <= 300 && plateauCourant.x + 200 + 75 - 14 > 333){
+                perso.direction = 0;
+                plateauCourant = *RDC;
+            }
             clear_bitmap(page);
             draw_plateau(plateauCourant,page);
 
 
 
 
-            perso.direction = 1;
+
             plateauCourant.y = MIN(plateauCourant.y + collision_plateau(plateauCourant, perso, deplacement),plateauCourant.yMax);
             perso.state = (perso.state + 1)%30;
 

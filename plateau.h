@@ -21,7 +21,8 @@ typedef struct plateau {
     //void (*dessine_plateau)(decors_list);
 } PLATEAU;
 
-extern PLATEAU * plateauDebut;
+extern PLATEAU * chambre;
+extern PLATEAU * RDC;
 
 void draw_plateau(PLATEAU plateau, BITMAP * page);
 
