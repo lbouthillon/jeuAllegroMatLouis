@@ -7,10 +7,16 @@
 DECOR * fondBlancDecor = NULL;
 DECOR * litDecor = NULL;
 DECOR * mursDecor = NULL;
+DECOR * porteSangDecor = NULL;
+DECOR * goutteSangDecor = NULL;
+DECOR * murs2Decor = NULL;
 
 DECOR fondBlancDecorObject ;
 DECOR litDecorObject ;
 DECOR mursDecorObject;
+DECOR porteSandDecorObject;
+DECOR goutteSangDecorObject;
+DECOR murs2DecorObject;
 
 int collision(PERSONNAGE perso, DECOR * d, int deplacement){
     if (!(d->franchissabe)){
@@ -34,12 +40,23 @@ void init_decors(){
     litDecorObject = (DECOR){lit,200,300,92,60,0};
     fondBlancDecorObject = (DECOR){fondBlanc,0,0,640,640,1};
     mursDecorObject = (DECOR){murs,120,120,380,380,1};
+    porteSandDecorObject = (DECOR){porteSang,200,35,75,144,1};
+    goutteSangDecorObject = (DECOR){goutteSang,220,80,5,3,1};
+    murs2DecorObject = (DECOR){murs2,160,160,300,300,1};
+
     litDecorObject.image = lit;
     fondBlancDecorObject.image = fondBlanc;
     mursDecorObject.image = murs;
+    porteSandDecorObject.image = porteSang;
+    goutteSangDecorObject.image = goutteSang;
+    murs2DecorObject.image = murs2;
+
     litDecor = &litDecorObject;
     fondBlancDecor = &fondBlancDecorObject;
     mursDecor = &mursDecorObject;
+    porteSangDecor = &porteSandDecorObject;
+    goutteSangDecor = &goutteSangDecorObject;
+    murs2Decor = &murs2DecorObject;
 
 
 

@@ -18,6 +18,9 @@ typedef struct decor {
 extern DECOR * fondBlancDecor;
 extern DECOR * litDecor;
 extern DECOR * mursDecor;
+extern DECOR * porteSangDecor;
+extern DECOR * goutteSangDecor;
+extern DECOR * murs2Decor;
 
 int collision(PERSONNAGE perso,DECOR * d, int deplacement);
 

@@ -114,7 +114,7 @@ int main()
             draw_plateau(*plateauDebut,page);
             //rect(page,120,120,500,500,makecol(0,0,0));
 
-            if(perso.y>82){
+            if(perso.y>122){
 
                 perso.direction = 1;
                 perso.y = MAX(perso.y-collision(perso, litDecor,deplacement),82); // mouvement négatif en ordonnées
@@ -129,7 +129,7 @@ int main()
             clear_bitmap(page);
             draw_plateau(*plateauDebut,page);
             //rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.y<440){
+            if(perso.y<400){
                 perso.direction = 0;
                 perso.y = MIN(perso.y+collision(perso, litDecor,deplacement),440); // mouvement positif en ordonnées
                 perso.state = (perso.state + 1)%30;
@@ -144,7 +144,7 @@ int main()
             clear_bitmap(page);
             draw_plateau(*plateauDebut,page);
             //rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.x>122){
+            if(perso.x>162){
                 perso.direction = 2;
                 perso.x = MAX(perso.x-collision(perso, litDecor,deplacement),122); // mouvement négatif en abscisses
                 perso.state = (perso.state + 1)%30;
@@ -157,7 +157,7 @@ int main()
             clear_bitmap(page);
             draw_plateau(*plateauDebut,page);
             //rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.x<458){
+            if(perso.x<418){
                 perso.direction = 3;
                 perso.x = MIN(perso.x+collision(perso, litDecor,deplacement),458); // mouvement positif en abscisses
                 perso.state = (perso.state + 1)%30;
@@ -174,9 +174,18 @@ int main()
         if (mouse_b & 1 || timer == 0){
             messageSupr();
         }
-            blit(page,screen,0,0,0,0,800,600);
-            rest(20);
-            timer --;
+        if (key[KEY_E]){
+            draw_sprite(page,menu,460,0);
+            if (key[KEY_H]){
+                    printf("hola");
+                if((mouse_x >= 0 && mouse_x <= 640) &&(mouse_y >= 0 && mouse_y <= 640)){
+                    draw_sprite(page,sac,0,0);
+                }
+            }
+        }
+        blit(page,screen,0,0,0,0,800,600);
+        rest(20);
+        timer --;
         }
         return 0;
 
