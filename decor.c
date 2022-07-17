@@ -18,27 +18,27 @@ DECOR porteSandDecorObject;
 DECOR goutteSangDecorObject;
 DECOR murs2DecorObject;
 
-int collision(PERSONNAGE perso, DECOR * d, int deplacement){
+int collision(PERSONNAGE perso, DECOR * d, int deplacement, int Xref, int Yref){
+
     if (!(d->franchissabe)){
-        if (perso.direction == 0 && d->y >= perso.y + PERSONNAGE_HEIGHT && d->y < perso.y + PERSONNAGE_HEIGHT + deplacement && perso.x < d->x + d->width && perso.x + PERSONNAGE_WIDTH > d->x)
-            return MAX(0,d->y - perso.y - PERSONNAGE_HEIGHT);
-        if (perso.direction == 1 && d->y + d->length <= perso.y + 40 && d->y + d->length > perso.y + 40 - deplacement && perso.x < d->x + d->width && perso.x + PERSONNAGE_WIDTH > d->x)
-            return MAX(0,perso.y - d->y - d->length);
-        if (perso.direction == 2 && d->x + d->width <= perso.x && d->x + d->width > perso.x - deplacement && perso.y + 40< d->y + d->length && perso.y + PERSONNAGE_HEIGHT > d->y)
-            return MAX(0,perso.x - d->x - d->width);
-        if (perso.direction == 3 && d->x >= perso.x + PERSONNAGE_WIDTH && d->x < perso.x + PERSONNAGE_WIDTH + deplacement && perso.y + 40 < d->y + d->length && perso.y + PERSONNAGE_HEIGHT > d->y)
-            return MAX(0,d->x - perso.x - PERSONNAGE_WIDTH);
+        if (perso.direction == 0 && d->y + Yref >= perso.y + PERSONNAGE_HEIGHT && d->y + Yref < perso.y + PERSONNAGE_HEIGHT + deplacement && perso.x + 7 < d->x + Xref + d->width && perso.x + PERSONNAGE_WIDTH - 7 > d->x + Xref)
+            return MAX(0,d->y + Yref - perso.y - PERSONNAGE_HEIGHT);
+        if (perso.direction == 1 && d->y + Yref + d->length <= perso.y + 40 && d->y + Yref + d->length > perso.y + 40 - deplacement && perso.x + 7 < d->x + Xref + d->width && perso.x + PERSONNAGE_WIDTH - 7 > d->x + Xref)
+            return MAX(0,perso.y - d->y - Yref - d->length);
+        if (perso.direction == 2 && d->x + Xref + d->width <= perso.x + 7 && d->x + Xref + d->width > perso.x + 7 - deplacement && perso.y + 40< d->y + Yref + d->length && perso.y + PERSONNAGE_HEIGHT > d->y + Yref)
+            return MAX(0,perso.x - d->x - Xref - d->width);
+        if (perso.direction == 3 && d->x + Xref >= perso.x - 7 + PERSONNAGE_WIDTH && d->x + Xref < perso.x - 7 + PERSONNAGE_WIDTH + deplacement && perso.y + 40 < d->y + Yref + d->length && perso.y + PERSONNAGE_HEIGHT > d->y + Yref)
+            return MAX(0,d->x + Xref - perso.x + 7 - PERSONNAGE_WIDTH);
     }
 
     return deplacement;
 }
 
 
-
 void init_decors(){
 
-    litDecorObject = (DECOR){lit,200,300,92,60,0};
-    fondBlancDecorObject = (DECOR){fondBlanc,0,0,640,640,1};
+    litDecorObject = (DECOR){lit,220,300,92,60,0};
+    fondBlancDecorObject = (DECOR){fondBlanc,-200,-200,1040,1040,1};
     mursDecorObject = (DECOR){murs,120,120,380,380,1};
     porteSandDecorObject = (DECOR){porteSang,200,35,75,144,1};
     goutteSangDecorObject = (DECOR){goutteSang,220,80,5,3,1};
@@ -62,11 +62,11 @@ void init_decors(){
 
 };
 
-void afficher_decor(DECOR decor, BITMAP * page){
+void afficher_decor(DECOR decor, BITMAP * page, int Xref, int Yref){
     if (!decor.image)
     {
         allegro_message("image du decor NULL");
         exit(EXIT_FAILURE);
     }
-    draw_sprite(page,decor.image,decor.x,decor.y);
+    draw_sprite(page,decor.image,decor.x + Xref,decor.y + Yref);
 };

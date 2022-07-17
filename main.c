@@ -11,6 +11,7 @@
 // création du personnage avec ses deux coordonnees, sa direction (entre 0 et 3) et son status (entre 0 et 2)
 PERSONNAGE perso = {0,0,0,0};
 
+
 // initialise le personnage à la position 300, 300 avec l'image du bonhomme de face.
 void initialisation(BITMAP * heros, int x, int y){
     perso.x = x;
@@ -20,9 +21,9 @@ void initialisation(BITMAP * heros, int x, int y){
 
 int main()
 {
+
     char phrase[] = "salutation jeune homme";
     char lit[] = "Voici votre lit";
-
 
 
     // paramètres de l'élément à animer
@@ -60,6 +61,7 @@ int main()
         init_bitmap(page);
         init_decors();
         init_plateaux();
+        PLATEAU plateauCourant = *plateauDebut;
         //creation du DECOR fond blanc avec ses coord, sa taille et sa franchissabilité
         /*DECOR fondBlancDecor = {fondBlanc,0,0,640,640,1};
         fondBlancDecor.image = fondBlanc;
@@ -73,7 +75,7 @@ int main()
         //plateau = add_decor(plateau, *fondBlancDecor);
         //plateau = add_decor(plateau, *litDecor);
 
-        draw_plateau(*plateauDebut,page);
+        draw_plateau(plateauCourant,page);
 
 
         evertale = load_sample("debutJeu.wav");
@@ -111,30 +113,30 @@ int main()
         if (key[KEY_W])
         {
             clear_bitmap(page);
-            draw_plateau(*plateauDebut,page);
-            //rect(page,120,120,500,500,makecol(0,0,0));
+            draw_plateau(plateauCourant,page);
 
-            if(perso.y>122){
 
-                perso.direction = 1;
-                perso.y = MAX(perso.y-collision(perso, litDecor,deplacement),82); // mouvement négatif en ordonnées
-                perso.state = (perso.state + 1)%30;
 
-            }
+
+            perso.direction = 1;
+            plateauCourant.y = MIN(plateauCourant.y + collision_plateau(plateauCourant, perso, deplacement),plateauCourant.yMax);
+            perso.state = (perso.state + 1)%30;
+
+
             perso.image = bonhomme[1][perso.state/10];
             afficher_personnage(perso,page);
         }
         if (key[KEY_S])
         {
             clear_bitmap(page);
-            draw_plateau(*plateauDebut,page);
-            //rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.y<400){
-                perso.direction = 0;
-                perso.y = MIN(perso.y+collision(perso, litDecor,deplacement),440); // mouvement positif en ordonnées
-                perso.state = (perso.state + 1)%30;
+            draw_plateau(plateauCourant,page);
 
-            }
+
+            perso.direction = 0;
+            plateauCourant.y = MAX(plateauCourant.y-collision_plateau(plateauCourant, perso, deplacement),plateauCourant.yMin);
+            perso.state = (perso.state + 1)%30;
+
+
             perso.image = bonhomme[0][perso.state/10];
             afficher_personnage(perso,page);
         }
@@ -142,26 +144,26 @@ int main()
         if (key[KEY_A])
         {
             clear_bitmap(page);
-            draw_plateau(*plateauDebut,page);
-            //rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.x>162){
-                perso.direction = 2;
-                perso.x = MAX(perso.x-collision(perso, litDecor,deplacement),122); // mouvement négatif en abscisses
-                perso.state = (perso.state + 1)%30;
-            }
+            draw_plateau(plateauCourant,page);
+
+
+            perso.direction = 2;
+            plateauCourant.x = MIN(plateauCourant.x+collision_plateau(plateauCourant, perso, deplacement),plateauCourant.xMax);
+            perso.state = (perso.state + 1)%30;
+
             perso.image = bonhomme[2][perso.state/10];
             afficher_personnage(perso,page);
         }
         if (key[KEY_D])
         {
             clear_bitmap(page);
-            draw_plateau(*plateauDebut,page);
-            //rect(page,120,120,500,500,makecol(0,0,0));
-            if(perso.x<418){
-                perso.direction = 3;
-                perso.x = MIN(perso.x+collision(perso, litDecor,deplacement),458); // mouvement positif en abscisses
-                perso.state = (perso.state + 1)%30;
-            }
+            draw_plateau(plateauCourant,page);
+
+
+            perso.direction = 3;
+            plateauCourant.x = MAX(plateauCourant.x - collision_plateau(plateauCourant, perso, deplacement),plateauCourant.xMin);
+            perso.state = (perso.state + 1)%30;
+
             perso.image = bonhomme[3][perso.state/10];
             afficher_personnage(perso,page);
         }

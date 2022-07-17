@@ -14,13 +14,38 @@ PLATEAU p1;
 void draw_plateau(PLATEAU plateau, BITMAP * page){
     for (int i = 0 ; i < plateau.nbDecors ; i++){
         DECOR d = plateau.decors[i];
-        afficher_decor(d,page);
+        afficher_decor(d,page,plateau.x,plateau.y);
     }
 };
+
+/*PLATEAU * deplacer_plateau(PLATEAU plateau, int deplacement_x, int deplacement_y){
+    plateau.x = plateau.x + deplacement_x;
+    plateau.y = plateau.y + deplacement_y;
+    for (int i = 0 ; i < plateau.nbDecors ; i++){
+        plateau.decors[i].x = plateau.decors[i].x + deplacement_x;
+        plateau.decors[i].y = plateau.decors[i].y + deplacement_y;
+    }
+    return &plateau;
+}*/
+
+int collision_plateau(PLATEAU plateau, PERSONNAGE perso, int deplacement_max){
+    int deplacement = deplacement_max;
+    for (int i = 0 ; i < plateau.nbDecors ; i++){
+        DECOR d = plateau.decors[i];
+        deplacement = MIN(deplacement,collision(perso, &d, deplacement_max, plateau.x, plateau.y));
+    }
+    return deplacement;
+}
 
 void init_plateaux(){
 
     p1.nbDecors = 0;
+    p1.x = 0;
+    p1.y = 0;
+    p1.xMin =  - 117;
+    p1.xMax = 137;
+    p1.yMin = -100;
+    p1.yMax = 180;
     p1 = add_decor(p1, *fondBlancDecor);
     p1 = add_decor(p1, *murs2Decor);
     p1 = add_decor(p1, *litDecor);
