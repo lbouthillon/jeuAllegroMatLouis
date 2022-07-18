@@ -13,6 +13,30 @@ PLATEAU p1;
 PLATEAU * RDC = NULL;
 PLATEAU p2;
 
+PLATEAU changementPlateau1(PLATEAU plateauCourant, PERSONNAGE perso, BITMAP * page){
+    if (perso.direction == 1 && plateauCourant.y == 180 && plateauCourant.x >= 70 && plateauCourant.x <= 105){
+        for (int i = 0 ; i < 5 ; i++){
+            perso.y = perso.y - 5;
+            clear_bitmap(page);
+            draw_plateau(plateauCourant,page);
+            afficher_personnage(perso,page);
+            blit(page,screen,0,0,0,0,800,600);
+            rest(20);
+        }
+
+        perso.direction = 0;
+        //allegro_message("sortie");
+        RDC->x = plateauCourant.x;
+        RDC->y = plateauCourant.y;
+        return *RDC;
+    }
+    return plateauCourant;
+}
+
+PLATEAU changementPlateau2(PLATEAU plateauCourant, PERSONNAGE perso, BITMAP * page){
+    return plateauCourant;
+}
+
 void draw_plateau(PLATEAU plateau, BITMAP * page){
     for (int i = 0 ; i < plateau.nbDecors ; i++){
         DECOR d = plateau.decors[i];
@@ -53,6 +77,7 @@ void init_plateaux(){
     p1 = add_decor(p1, *litDecor);
     p1 = add_decor(p1, *porteSangDecor);
     p1 = add_decor(p1, *goutteSangDecor);
+    p1.changementPlateau = changementPlateau1;
     chambre = &p1;
 
     p2.nbDecors = 0;
@@ -62,9 +87,11 @@ void init_plateaux(){
     p2.xMax = 137;
     p2.yMin = -100;
     p2.yMax = 180;
-    p2 = add_decor(p1, *fondBlancDecor);
-    p2 = add_decor(p1, *murs2Decor);
-    p2 = add_decor(p1, *porteSangDecor);
+    p2 = add_decor(p2, *fondBlancDecor);
+    p2 = add_decor(p2, *murs2Decor);
+    p2 = add_decor(p2, *porteSangDecor);
+    p2.changementPlateau = changementPlateau2;
+    RDC = &p2;
 };
 
 PLATEAU add_decor(PLATEAU plateau, DECOR decor){
@@ -72,6 +99,8 @@ PLATEAU add_decor(PLATEAU plateau, DECOR decor){
     plateau.nbDecors = plateau.nbDecors + 1;
     return plateau;
 };
+
+
 
 /*BITMAP * init_page()
 {

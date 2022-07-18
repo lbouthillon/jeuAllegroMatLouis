@@ -3,6 +3,7 @@
 
 #include <allegro.h>
 #include "decor.h"
+#include "personnage.h"
 
 
 extern int NB_CASES_LARG;
@@ -18,6 +19,7 @@ typedef struct plateau {
     int yMax;
     int nbDecors;
     DECOR decors[200];
+    struct plateau (*changementPlateau)(struct plateau plateauCourant, PERSONNAGE perso, BITMAP * page);
     //void (*dessine_plateau)(decors_list);
 } PLATEAU;
 
