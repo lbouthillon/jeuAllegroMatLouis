@@ -19,7 +19,7 @@ typedef struct plateau {
     int yMax;
     int nbDecors;
     DECOR decors[200];
-    struct plateau (*changementPlateau)(struct plateau plateauCourant, PERSONNAGE perso, BITMAP * page);
+    struct plateau (*changementPlateau)(struct plateau plateauCourant, PERSONNAGE * perso, BITMAP * page);
     //void (*dessine_plateau)(decors_list);
 } PLATEAU;
 

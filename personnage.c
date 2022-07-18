@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "personnage.h"
+#include "bitmap.h"
 #include <allegro.h>
 
 
@@ -48,5 +49,5 @@ PERSONNAGE_WIDTH = 40;
 
 void afficher_personnage(PERSONNAGE perso, BITMAP * page)
 {
-    draw_sprite(page,perso.image,perso.x,perso.y);
+    draw_sprite(page,bonhomme[perso.direction][perso.state/10],perso.x,perso.y);
 };

@@ -136,7 +136,7 @@ int main()
             perso.state = (perso.state + 1)%30;
 
 
-            perso.image = bonhomme[perso.direction][perso.state/10];
+
             //afficher_personnage(perso,page);
         }
         if (key[KEY_S])
@@ -150,7 +150,7 @@ int main()
             perso.state = (perso.state + 1)%30;
 
 
-            perso.image = bonhomme[0][perso.state/10];
+
             //afficher_personnage(perso,page);
         }
 
@@ -164,7 +164,7 @@ int main()
             plateauCourant.x = MIN(plateauCourant.x+collision_plateau(plateauCourant, perso, deplacement),plateauCourant.xMax);
             perso.state = (perso.state + 1)%30;
 
-            perso.image = bonhomme[2][perso.state/10];
+
             //afficher_personnage(perso,page);
         }
         if (key[KEY_D])
@@ -177,7 +177,7 @@ int main()
             plateauCourant.x = MAX(plateauCourant.x - collision_plateau(plateauCourant, perso, deplacement),plateauCourant.xMin);
             perso.state = (perso.state + 1)%30;
 
-            perso.image = bonhomme[3][perso.state/10];
+
             //afficher_personnage(perso,page);
         }
         if (mouse_b & 2){
@@ -190,10 +190,9 @@ int main()
             messageSupr();
         }
 
-        plateauCourant = plateauCourant.changementPlateau(plateauCourant,perso,page);
+        plateauCourant = plateauCourant.changementPlateau(plateauCourant,&perso,page);
 
-        printf("%d", perso.direction);
-        printf("%c",'\n');
+
 
         clear_bitmap(page);
         draw_plateau(plateauCourant,page);

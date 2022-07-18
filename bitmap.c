@@ -8,7 +8,7 @@ BITMAP * murs = NULL;
 BITMAP * porteSang = NULL;
 BITMAP * goutteSang = NULL;
 BITMAP * murs2 = NULL;
-BITMAP * bonhomme[4][3] = {NULL};
+BITMAP * bonhomme[4][9] = {NULL};
 BITMAP * menu = NULL;
 BITMAP * sac = NULL;
 
@@ -119,6 +119,42 @@ void init_bitmap(BITMAP * page){
     if (!bonhomme[2][2])
     {
         allegro_message("prb allocation BITMAP bonhommeGauche");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[1][3] = load_bitmap("bonhommeDosDescente1.bmp",NULL);
+    if (!bonhomme[1][3])
+    {
+        allegro_message("prb allocation BITMAP bonhommeDosDescente1");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[1][4] = load_bitmap("bonhommeDosDescente2.bmp",NULL);
+    if (!bonhomme[1][4])
+    {
+        allegro_message("prb allocation BITMAP bonhommeDosDescente2");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[1][5] = load_bitmap("bonhommeDosDescente3.bmp",NULL);
+    if (!bonhomme[1][5])
+    {
+        allegro_message("prb allocation BITMAP bonhommeDosDescente3");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[1][6] = load_bitmap("bonhommeDosDescente4.bmp",NULL);
+    if (!bonhomme[1][6])
+    {
+        allegro_message("prb allocation BITMAP bonhommeDosDescente4");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[1][7] = load_bitmap("bonhommeDosDescente5.bmp",NULL);
+    if (!bonhomme[1][7])
+    {
+        allegro_message("prb allocation BITMAP bonhommeDosDescente5");
+        exit(EXIT_FAILURE);
+    }
+    bonhomme[1][8] = load_bitmap("bonhommeDosDescente6.bmp",NULL);
+    if (!bonhomme[1][8])
+    {
+        allegro_message("prb allocation BITMAP bonhommeDosDescente6");
         exit(EXIT_FAILURE);
     }
     menu = load_bitmap("menu.bmp",NULL);

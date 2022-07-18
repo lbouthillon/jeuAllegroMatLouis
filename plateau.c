@@ -13,21 +13,48 @@ PLATEAU p1;
 PLATEAU * RDC = NULL;
 PLATEAU p2;
 
-PLATEAU changementPlateau1(PLATEAU plateauCourant, PERSONNAGE perso, BITMAP * page){
-    if (perso.direction == 1 && plateauCourant.y == 180 && plateauCourant.x >= 70 && plateauCourant.x <= 105){
-        for (int i = 0 ; i < 5 ; i++){
-            perso.y = perso.y - 5;
+PLATEAU changementPlateau1(PLATEAU plateauCourant, PERSONNAGE * persoPtr, BITMAP * page){
+
+    printf("%d", persoPtr->y);
+    printf("%c",'\n');
+
+    if (persoPtr->direction == 1 && plateauCourant.y == 180 && plateauCourant.x >= 70 && plateauCourant.x <= 105){
+        //allegro_message("apres if");
+        while (persoPtr->y != 282){
+            persoPtr->y = MAX(persoPtr->y - 5,282);
             clear_bitmap(page);
             draw_plateau(plateauCourant,page);
-            afficher_personnage(perso,page);
+            afficher_personnage(*persoPtr,page);
             blit(page,screen,0,0,0,0,800,600);
-            rest(20);
+            rest(100);
         }
 
-        perso.direction = 0;
+
+        for (int i = 0 ; i < 6 ; i++){
+            //perso->y = perso->y - 5;
+            persoPtr->state = 10* (i+3);
+            clear_bitmap(page);
+            draw_plateau(plateauCourant,page);
+            afficher_personnage(*persoPtr,page);
+            blit(page,screen,0,0,0,0,800,600);
+            rest(300);
+        }
+        //allegro_message("2eme partie");
+        persoPtr->state = 0;
+        persoPtr->direction = 0;
+        persoPtr->y = persoPtr->y - 30+18;
         //allegro_message("sortie");
         RDC->x = plateauCourant.x;
         RDC->y = plateauCourant.y;
+        //plateauCourant = *RDC;
+        for (int i = 0 ; i < 6 ; i++){
+            persoPtr->y = persoPtr->y + 5;
+            clear_bitmap(page);
+            draw_plateau(plateauCourant,page);
+            afficher_personnage(*persoPtr,page);
+            blit(page,screen,0,0,0,0,800,600);
+            rest(50);
+        }
         return *RDC;
     }
     return plateauCourant;
