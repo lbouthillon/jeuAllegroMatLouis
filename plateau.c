@@ -15,8 +15,7 @@ PLATEAU p2;
 
 PLATEAU changementPlateau1(PLATEAU plateauCourant, PERSONNAGE * persoPtr, BITMAP * page){
 
-    printf("%d", persoPtr->y);
-    printf("%c",'\n');
+
 
     if (persoPtr->direction == 1 && plateauCourant.y == 180 && plateauCourant.x >= 70 && plateauCourant.x <= 105){
         //allegro_message("apres if");
@@ -46,7 +45,7 @@ PLATEAU changementPlateau1(PLATEAU plateauCourant, PERSONNAGE * persoPtr, BITMAP
         //allegro_message("sortie");
         RDC->x = plateauCourant.x;
         RDC->y = plateauCourant.y;
-        //plateauCourant = *RDC;
+        plateauCourant = *RDC;
         for (int i = 0 ; i < 6 ; i++){
             persoPtr->y = persoPtr->y + 5;
             clear_bitmap(page);
@@ -66,7 +65,7 @@ PLATEAU changementPlateau2(PLATEAU plateauCourant, PERSONNAGE perso, BITMAP * pa
 
 void draw_plateau(PLATEAU plateau, BITMAP * page){
     for (int i = 0 ; i < plateau.nbDecors ; i++){
-        DECOR d = plateau.decors[i];
+        DECOR * d = plateau.decors[i];
         afficher_decor(d,page,plateau.x,plateau.y);
     }
 };
@@ -84,8 +83,8 @@ void draw_plateau(PLATEAU plateau, BITMAP * page){
 int collision_plateau(PLATEAU plateau, PERSONNAGE perso, int deplacement_max){
     int deplacement = deplacement_max;
     for (int i = 0 ; i < plateau.nbDecors ; i++){
-        DECOR d = plateau.decors[i];
-        deplacement = MIN(deplacement,collision(perso, &d, deplacement_max, plateau.x, plateau.y));
+        DECOR * d = plateau.decors[i];
+        deplacement = MIN(deplacement,collision(perso, d, deplacement_max, plateau.x, plateau.y));
     }
     return deplacement;
 }
@@ -99,11 +98,12 @@ void init_plateaux(){
     p1.xMax = 137;
     p1.yMin = -100;
     p1.yMax = 180;
-    p1 = add_decor(p1, *fondBlancDecor);
-    p1 = add_decor(p1, *murs2Decor);
-    p1 = add_decor(p1, *litDecor);
-    p1 = add_decor(p1, *porteSangDecor);
-    p1 = add_decor(p1, *goutteSangDecor);
+    p1 = add_decor(p1, fondBlancDecor);
+    p1 = add_decor(p1, murs2Decor);
+    p1 = add_decor(p1, litDecor);
+    p1 = add_decor(p1, porteSangDecor);
+    p1 = add_decor(p1, goutteSangDecor);
+    p1 = add_decor(p1, horlogeDecor);
     p1.changementPlateau = changementPlateau1;
     chambre = &p1;
 
@@ -114,14 +114,14 @@ void init_plateaux(){
     p2.xMax = 137;
     p2.yMin = -100;
     p2.yMax = 180;
-    p2 = add_decor(p2, *fondBlancDecor);
-    p2 = add_decor(p2, *murs2Decor);
-    p2 = add_decor(p2, *porteSangDecor);
+    p2 = add_decor(p2, fondBlancDecor);
+    p2 = add_decor(p2, murs2Decor);
+    p2 = add_decor(p2, porteSangDecor);
     p2.changementPlateau = changementPlateau2;
     RDC = &p2;
 };
 
-PLATEAU add_decor(PLATEAU plateau, DECOR decor){
+PLATEAU add_decor(PLATEAU plateau, DECOR * decor){
     plateau.decors[plateau.nbDecors] = decor;
     plateau.nbDecors = plateau.nbDecors + 1;
     return plateau;

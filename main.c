@@ -31,6 +31,7 @@ int main()
     //paramètres du plateau
     int width = NB_CASES_LARG * 64;
     int length = NB_CASES_LONG * 64;
+    int menuVisible = 0;
 
     allegro_init();
     install_keyboard();
@@ -186,9 +187,11 @@ int main()
                 timer = 50;
             }
         }
-        if (mouse_b & 1 || timer == 0){
-            messageSupr();
-        }
+        //if (mouse_b & 1 || timer == 0){
+        //    messageSupr();
+        //}
+
+
 
         plateauCourant = plateauCourant.changementPlateau(plateauCourant,&perso,page);
 
@@ -199,12 +202,17 @@ int main()
         afficher_personnage(perso,page);
 
         if (key[KEY_E]){
+            menuVisible = 1 - menuVisible;
+            rest(200);
+            printf("%d", menuVisible);
+            printf("%c",'\n');
+
+        }
+
+        if (menuVisible) {
             draw_sprite(page,menu,460,0);
-            if (key[KEY_H]){
-                    printf("hola");
-                if((mouse_x >= 0 && mouse_x <= 640) &&(mouse_y >= 0 && mouse_y <= 640)){
-                    draw_sprite(page,sac,0,0);
-                }
+            if((mouse_b & 1)&&(mouse_x >= 0 && mouse_x <= 640) &&(mouse_y >= 0 && mouse_y <= 640)){
+                draw_sprite(page,sac,0,0);
             }
         }
 

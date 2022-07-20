@@ -18,7 +18,7 @@ typedef struct plateau {
     int xMax;
     int yMax;
     int nbDecors;
-    DECOR decors[200];
+    DECOR * decors[200];
     struct plateau (*changementPlateau)(struct plateau plateauCourant, PERSONNAGE * perso, BITMAP * page);
     //void (*dessine_plateau)(decors_list);
 } PLATEAU;
@@ -34,7 +34,7 @@ int collision_plateau(PLATEAU plateau, PERSONNAGE perso, int deplacement_max);
 
 void init_plateaux();
 
-PLATEAU add_decor(PLATEAU plateau, DECOR decor);
+PLATEAU add_decor(PLATEAU plateau, DECOR * decor);
 
 #endif
 

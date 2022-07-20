@@ -9,6 +9,7 @@ BITMAP * porteSang = NULL;
 BITMAP * goutteSang = NULL;
 BITMAP * murs2 = NULL;
 BITMAP * bonhomme[4][9] = {NULL};
+BITMAP * horloge[7] = {NULL};
 BITMAP * menu = NULL;
 BITMAP * sac = NULL;
 
@@ -167,6 +168,48 @@ void init_bitmap(BITMAP * page){
     if (!sac)
     {
         allegro_message("prb allocation BITMAP sac");
+        exit(EXIT_FAILURE);
+    }
+    horloge[0] = load_bitmap("horloge1.bmp",NULL);
+    if (!horloge[0])
+    {
+        allegro_message("prb allocation BITMAP horloge1");
+        exit(EXIT_FAILURE);
+    }
+    horloge[1] = load_bitmap("horloge2.bmp",NULL);
+    if (!horloge[1])
+    {
+        allegro_message("prb allocation BITMAP horloge2");
+        exit(EXIT_FAILURE);
+    }
+    horloge[2] = load_bitmap("horloge3.bmp",NULL);
+    if (!horloge[2])
+    {
+        allegro_message("prb allocation BITMAP horloge3");
+        exit(EXIT_FAILURE);
+    }
+    horloge[3] = load_bitmap("horloge4.bmp",NULL);
+    if (!horloge[3])
+    {
+        allegro_message("prb allocation BITMAP horloge4");
+        exit(EXIT_FAILURE);
+    }
+    horloge[4] = load_bitmap("horloge5.bmp",NULL);
+    if (!horloge[4])
+    {
+        allegro_message("prb allocation BITMAP horloge5");
+        exit(EXIT_FAILURE);
+    }
+    horloge[5] = load_bitmap("horloge6.bmp",NULL);
+    if (!horloge[5])
+    {
+        allegro_message("prb allocation BITMAP horloge6");
+        exit(EXIT_FAILURE);
+    }
+    horloge[6] = load_bitmap("horloge7.bmp",NULL);
+    if (!horloge[6])
+    {
+        allegro_message("prb allocation BITMAP horloge7");
         exit(EXIT_FAILURE);
     }
     //draw_sprite(page,fondBlanc,0,0);

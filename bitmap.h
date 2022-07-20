@@ -4,6 +4,7 @@
 #include <allegro.h>
 
 extern BITMAP * bonhomme[4][9];
+extern BITMAP * horloge[7];
 extern BITMAP * fondBlanc;
 extern BITMAP * lit;
 extern BITMAP * murs;

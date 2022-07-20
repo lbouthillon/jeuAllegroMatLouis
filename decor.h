@@ -8,12 +8,14 @@
 
 
 typedef struct decor {
-    BITMAP * image;
+    int nbImages;
+    int state;
     int x;
     int y;
     int length;
     int width;
     int franchissabe;
+    BITMAP * images[20];
 } DECOR;
 
 extern DECOR * fondBlancDecor;
@@ -22,10 +24,11 @@ extern DECOR * mursDecor;
 extern DECOR * porteSangDecor;
 extern DECOR * goutteSangDecor;
 extern DECOR * murs2Decor;
+extern DECOR * horlogeDecor;
 
 int collision(PERSONNAGE perso,DECOR * d, int deplacement, int Xref, int Yref);
 
-void afficher_decor(DECOR decor, BITMAP * page, int Xref, int Yref);
+void afficher_decor(DECOR * decor, BITMAP * page, int Xref, int Yref);
 
 void init_decors();
 
