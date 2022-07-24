@@ -12,31 +12,73 @@ PLATEAU * chambre = NULL;
 PLATEAU p1;
 PLATEAU * RDC = NULL;
 PLATEAU p2;
+int menuVisible = 0;
+
+void evenementPlateau1 (PLATEAU plateauCourant, PERSONNAGE perso, BITMAP * page){
+
+    if (key[KEY_E] && collision(perso, plateauCourant.decors[5], 5, plateauCourant.x, plateauCourant.y)==0){
+            plateauCourant.decors[6]->nbImages = 16;
+        }
+    if (key[KEY_Q]){
+        printf("%d", menuVisible);
+        printf("%c", '\n');
+        if (menuVisible){
+            draw_sprite(page,menu,460,0);
+            while (key[KEY_Q]){
+                blit(page,screen,0,0,0,0,800,600);
+                rest(10);
+            }
+            while (!key[KEY_Q]){
+                blit(page,screen,0,0,0,0,800,600);
+                rest(10);
+            }
+            while (key[KEY_Q]){
+                blit(page,screen,0,0,0,0,800,600);
+                rest(10);
+            }
+
+        }
+        menuVisible = 1-menuVisible;
+
+    }
+    /*if (menuVisible) {
+            draw_sprite(page,menu,460,0);
+            if((mouse_b & 1)&&(mouse_x >= 0 && mouse_x <= 640) &&(mouse_y >= 0 && mouse_y <= 640)){
+                draw_sprite(page,sac,0,0);
+            }
+        }*/
+
+}
+
+void evenementPlateau2 (PLATEAU plateauCourant, PERSONNAGE perso, BITMAP * page){
+}
 
 PLATEAU changementPlateau1(PLATEAU plateauCourant, PERSONNAGE * persoPtr, BITMAP * page){
-
-
 
     if (persoPtr->direction == 1 && plateauCourant.y == 180 && plateauCourant.x >= 70 && plateauCourant.x <= 105){
         //allegro_message("apres if");
         while (persoPtr->y != 282){
             persoPtr->y = MAX(persoPtr->y - 5,282);
-            clear_bitmap(page);
-            draw_plateau(plateauCourant,page);
-            afficher_personnage(*persoPtr,page);
-            blit(page,screen,0,0,0,0,800,600);
-            rest(100);
+            for (int j = 0 ; j < 5 ; j++){
+                clear_bitmap(page);
+                draw_plateau(plateauCourant,page);
+                afficher_personnage(*persoPtr,page);
+                blit(page,screen,0,0,0,0,800,600);
+                rest(20);
+            }
         }
 
 
         for (int i = 0 ; i < 6 ; i++){
             //perso->y = perso->y - 5;
             persoPtr->state = 10* (i+3);
-            clear_bitmap(page);
-            draw_plateau(plateauCourant,page);
-            afficher_personnage(*persoPtr,page);
-            blit(page,screen,0,0,0,0,800,600);
-            rest(300);
+            for (int j = 0 ; j < 15 ; j++){
+                clear_bitmap(page);
+                draw_plateau(plateauCourant,page);
+                afficher_personnage(*persoPtr,page);
+                blit(page,screen,0,0,0,0,800,600);
+                rest(20);
+            }
         }
         //allegro_message("2eme partie");
         persoPtr->state = 0;
@@ -48,20 +90,69 @@ PLATEAU changementPlateau1(PLATEAU plateauCourant, PERSONNAGE * persoPtr, BITMAP
         plateauCourant = *RDC;
         for (int i = 0 ; i < 6 ; i++){
             persoPtr->y = persoPtr->y + 5;
-            clear_bitmap(page);
-            draw_plateau(plateauCourant,page);
-            afficher_personnage(*persoPtr,page);
-            blit(page,screen,0,0,0,0,800,600);
-            rest(50);
+            for (int j = 0 ; j < 3 ; j++){
+                clear_bitmap(page);
+                draw_plateau(plateauCourant,page);
+                afficher_personnage(*persoPtr,page);
+                blit(page,screen,0,0,0,0,800,600);
+                rest(20);
+            }
         }
         return *RDC;
     }
     return plateauCourant;
 }
 
-PLATEAU changementPlateau2(PLATEAU plateauCourant, PERSONNAGE perso, BITMAP * page){
+PLATEAU changementPlateau2(PLATEAU plateauCourant, PERSONNAGE * persoPtr, BITMAP * page){
+
+    if (persoPtr->direction == 1 && plateauCourant.y == 180 && plateauCourant.x >= 70 && plateauCourant.x <= 105){
+        //allegro_message("apres if");
+        while (persoPtr->y != 282){
+            persoPtr->y = MAX(persoPtr->y - 5,282);
+            for (int j = 0 ; j < 5 ; j++){
+                clear_bitmap(page);
+                draw_plateau(plateauCourant,page);
+                afficher_personnage(*persoPtr,page);
+                blit(page,screen,0,0,0,0,800,600);
+                rest(20);
+            }
+        }
+
+
+        for (int i = 0 ; i < 6 ; i++){
+            //perso->y = perso->y - 5;
+            persoPtr->state = 10* (i+3);
+            for (int j = 0 ; j < 15 ; j++){
+                clear_bitmap(page);
+                draw_plateau(plateauCourant,page);
+                afficher_personnage(*persoPtr,page);
+                blit(page,screen,0,0,0,0,800,600);
+                rest(20);
+            }
+        }
+        //allegro_message("2eme partie");
+        persoPtr->state = 0;
+        persoPtr->direction = 0;
+        persoPtr->y = persoPtr->y - 30+18;
+        //allegro_message("sortie");
+        chambre->x = plateauCourant.x;
+        chambre->y = plateauCourant.y;
+        plateauCourant = *chambre;
+        for (int i = 0 ; i < 6 ; i++){
+            persoPtr->y = persoPtr->y + 5;
+            for (int j = 0 ; j < 3 ; j++){
+                clear_bitmap(page);
+                draw_plateau(plateauCourant,page);
+                afficher_personnage(*persoPtr,page);
+                blit(page,screen,0,0,0,0,800,600);
+                rest(20);
+            }
+        }
+        return *chambre;
+    }
     return plateauCourant;
 }
+
 
 void draw_plateau(PLATEAU plateau, BITMAP * page){
     for (int i = 0 ; i < plateau.nbDecors ; i++){
@@ -103,8 +194,10 @@ void init_plateaux(){
     p1 = add_decor(p1, litDecor);
     p1 = add_decor(p1, porteSangDecor);
     p1 = add_decor(p1, goutteSangDecor);
-    p1 = add_decor(p1, horlogeDecor);
+    p1 = add_decor(p1, horlogeBasDecor);
+    p1 = add_decor(p1, horlogeHautDecor);
     p1.changementPlateau = changementPlateau1;
+    p1.evenements = evenementPlateau1;
     chambre = &p1;
 
     p2.nbDecors = 0;
@@ -118,6 +211,7 @@ void init_plateaux(){
     p2 = add_decor(p2, murs2Decor);
     p2 = add_decor(p2, porteSangDecor);
     p2.changementPlateau = changementPlateau2;
+    p2.evenements = evenementPlateau2;
     RDC = &p2;
 };
 

@@ -21,6 +21,7 @@ typedef struct plateau {
     DECOR * decors[200];
     struct plateau (*changementPlateau)(struct plateau plateauCourant, PERSONNAGE * perso, BITMAP * page);
     //void (*dessine_plateau)(decors_list);
+    void (*evenements) (struct plateau plateauCourant, PERSONNAGE perso, BITMAP * page);
 } PLATEAU;
 
 extern PLATEAU * chambre;

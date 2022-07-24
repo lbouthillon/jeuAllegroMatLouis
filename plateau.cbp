@@ -32,7 +32,7 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Linker>
-			<Add library="../../../Downloads/liballeg44.dll.a" />
+			<Add library="../../../../../Downloads/allegro_4_4_3_install/x86_64-w64-mingw32/lib/liballeg44.dll.a" />
 		</Linker>
 		<Unit filename="bitmap.c">
 			<Option compilerVar="CC" />
@@ -43,6 +43,12 @@
 		</Unit>
 		<Unit filename="decor.h" />
 		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="message.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="messageSupr.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="personnage.c">

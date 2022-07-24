@@ -8,6 +8,7 @@
 
 
 typedef struct decor {
+    int dureeImage;
     int nbImages;
     int state;
     int x;
@@ -24,7 +25,8 @@ extern DECOR * mursDecor;
 extern DECOR * porteSangDecor;
 extern DECOR * goutteSangDecor;
 extern DECOR * murs2Decor;
-extern DECOR * horlogeDecor;
+extern DECOR * horlogeBasDecor;
+extern DECOR * horlogeHautDecor;
 
 int collision(PERSONNAGE perso,DECOR * d, int deplacement, int Xref, int Yref);
 

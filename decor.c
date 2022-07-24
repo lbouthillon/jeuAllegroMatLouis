@@ -10,7 +10,8 @@ DECOR * mursDecor = NULL;
 DECOR * porteSangDecor = NULL;
 DECOR * goutteSangDecor = NULL;
 DECOR * murs2Decor = NULL;
-DECOR * horlogeDecor = NULL;
+DECOR * horlogeBasDecor = NULL;
+DECOR * horlogeHautDecor = NULL;
 
 DECOR fondBlancDecorObject ;
 DECOR litDecorObject ;
@@ -18,7 +19,8 @@ DECOR mursDecorObject;
 DECOR porteSandDecorObject;
 DECOR goutteSangDecorObject;
 DECOR murs2DecorObject;
-DECOR horlogeDecorObject;
+DECOR horlogeBasDecorObject;
+DECOR horlogeHautDecorObject;
 
 int collision(PERSONNAGE perso, DECOR * d, int deplacement, int Xref, int Yref){
 
@@ -45,16 +47,18 @@ void init_decors(){
     BITMAP * porteSangImages[20] = {NULL};
     BITMAP * goutteSangImages[20] = {NULL};
     BITMAP * murs2Images[20] = {NULL};
-    BITMAP * horlogeImages[20] = {NULL};
+    BITMAP * horlogeBasImages[20] = {NULL};
+    BITMAP * horlogeHautImages[20] = {NULL};
 
 
-    litDecorObject = (DECOR){1,0,350,250,92,60,0,litImages};
-    fondBlancDecorObject = (DECOR){1,0,-200,-200,1040,1040,1,fondBlancImages};
-    mursDecorObject = (DECOR){1,0,120,120,380,380,1,mursImages};
-    porteSandDecorObject = (DECOR){1,0,200,35,75,144,1,porteSangImages};
-    goutteSangDecorObject = (DECOR){1,0,220,80,5,3,1,goutteSangImages};
-    murs2DecorObject = (DECOR){1,0,160,160,300,300,1,murs2Images};
-    horlogeDecorObject = (DECOR){12,0,350,80,42,94,0,horlogeImages};
+    litDecorObject = (DECOR){1,1,0,350,250,92,60,0,litImages};
+    fondBlancDecorObject = (DECOR){1,1,0,-200,-200,1040,1040,1,fondBlancImages};
+    mursDecorObject = (DECOR){1,1,0,120,120,380,380,1,mursImages};
+    porteSandDecorObject = (DECOR){1,1,0,200,35,75,144,1,porteSangImages};
+    goutteSangDecorObject = (DECOR){1,1,0,220,80,5,3,1,goutteSangImages};
+    murs2DecorObject = (DECOR){1,1,0,160,160,300,300,1,murs2Images};
+    horlogeBasDecorObject = (DECOR){4,12,0,350,120,49,42,0,horlogeBasImages};
+    horlogeHautDecorObject = (DECOR){1,1,0,350,75,45,42,0,horlogeHautImages};
 
     litDecorObject.images[0] = lit;
     fondBlancDecorObject.images[0] = fondBlanc;
@@ -62,19 +66,24 @@ void init_decors(){
     porteSandDecorObject.images[0] = porteSang;
     goutteSangDecorObject.images[0] = goutteSang;
     murs2DecorObject.images[0] = murs2;
+    //horlogeHautDecorObject.images[0] = horlogeHaut[0];
 
-    horlogeDecorObject.images[0] = horloge[0];
-    horlogeDecorObject.images[1] = horloge[1];
-    horlogeDecorObject.images[2] = horloge[2];
-    horlogeDecorObject.images[3] = horloge[3];
-    horlogeDecorObject.images[4] = horloge[2];
-    horlogeDecorObject.images[5] = horloge[1];
-    horlogeDecorObject.images[6] = horloge[0];
-    horlogeDecorObject.images[7] = horloge[4];
-    horlogeDecorObject.images[8] = horloge[5];
-    horlogeDecorObject.images[9] = horloge[6];
-    horlogeDecorObject.images[10] = horloge[5];
-    horlogeDecorObject.images[11] = horloge[4];
+    for (int i = 0 ; i < 16 ; i++){
+        horlogeHautDecorObject.images[i] = horlogeHaut[i];
+    }
+
+    horlogeBasDecorObject.images[0] = horlogeBas[0];
+    horlogeBasDecorObject.images[1] = horlogeBas[1];
+    horlogeBasDecorObject.images[2] = horlogeBas[2];
+    horlogeBasDecorObject.images[3] = horlogeBas[3];
+    horlogeBasDecorObject.images[4] = horlogeBas[2];
+    horlogeBasDecorObject.images[5] = horlogeBas[1];
+    horlogeBasDecorObject.images[6] = horlogeBas[0];
+    horlogeBasDecorObject.images[7] = horlogeBas[4];
+    horlogeBasDecorObject.images[8] = horlogeBas[5];
+    horlogeBasDecorObject.images[9] = horlogeBas[6];
+    horlogeBasDecorObject.images[10] = horlogeBas[5];
+    horlogeBasDecorObject.images[11] = horlogeBas[4];
 
     litDecor = &litDecorObject;
     fondBlancDecor = &fondBlancDecorObject;
@@ -82,20 +91,21 @@ void init_decors(){
     porteSangDecor = &porteSandDecorObject;
     goutteSangDecor = &goutteSangDecorObject;
     murs2Decor = &murs2DecorObject;
-    horlogeDecor = &horlogeDecorObject;
+    horlogeBasDecor = &horlogeBasDecorObject;
+    horlogeHautDecor = &horlogeHautDecorObject;
 
 
 
 };
 
 void afficher_decor(DECOR * decor, BITMAP * page, int Xref, int Yref){
-    if (!decor->images[decor->state])
+    if (!decor->images[decor->state/decor->dureeImage])
     {
         allegro_message("image du decor NULL");
         exit(EXIT_FAILURE);
     }
     //printf("%d",decor.length);
     //printf("%c",'\n');
-    draw_sprite(page,decor->images[decor->state],decor->x + Xref,decor->y + Yref);
-    decor->state = (decor->state + 1)%decor->nbImages;
+    draw_sprite(page,decor->images[decor->state/decor->dureeImage],decor->x + Xref,decor->y + Yref);
+    decor->state = (decor->state + 1)%(decor->nbImages*decor->dureeImage);
 };
